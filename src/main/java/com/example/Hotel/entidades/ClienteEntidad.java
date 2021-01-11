@@ -5,5 +5,5 @@ public class ClienteEntidad {
     private String nombre;
     private int edad;
     private int idcliente;
-    
+    private String apellido;
 }
