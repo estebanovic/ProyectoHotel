@@ -56,6 +56,7 @@ public class Pieza {
 
     @Override
     public String toString() {
-        return "Pieza{" + "id=" + id + ", tipoPieza=" + tipoPieza + ", precioNoche=" + precioNoche + "Descripcion= " + descripcionPieza + "}";
+        return "Pieza{" + "id=" + id + ", tipoPieza=" + tipoPieza + ", precioNoche=" + precioNoche + ", descripcionPieza=" + descripcionPieza + '}';
     }
+
 }
