@@ -24,6 +24,11 @@ public class Arriendo {
         this.cotizacion = cotizacion;
     }
 
+    public Arriendo() {
+    }
+    
+    
+
     public String getId() {
         return id;
     }

@@ -20,6 +20,8 @@ public class Cliente {
         this.edad = edad;
         this.mail = mail;
     }
+ public Cliente() {
+    }
 
     public String getId() {
         return id;

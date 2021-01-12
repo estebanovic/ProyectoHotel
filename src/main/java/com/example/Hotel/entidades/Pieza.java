@@ -17,6 +17,10 @@ public class Pieza {
         this.precioNoche = precioNoche;
     }
 
+    public Pieza() {
+    }
+    
+
     public String getId() {
         return id;
     }
