@@ -31,6 +31,8 @@ public class ArriendoServicio {
         arriendo.setCliente(cliente);
         arriendo.setPieza(pieza);
         arriendo.setCotizacion(cotizacion);
+        
+        arriendoRepositorio.save(arriendo);
     }
 
 }
