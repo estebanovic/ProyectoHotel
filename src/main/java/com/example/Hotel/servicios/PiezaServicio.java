@@ -39,7 +39,7 @@ public class PiezaServicio {
     public List<Pieza> listarPiezas(){
         return piezaRepositorio.findAll();
     }
-    public void eliminarCliente(String id) throws Exception {
+    public void eliminarPieza(String id) throws Exception {
         Optional<Pieza> respuesta = piezaRepositorio.findById(id);
         if (respuesta.isPresent()) {
             Pieza pieza = respuesta.get();
