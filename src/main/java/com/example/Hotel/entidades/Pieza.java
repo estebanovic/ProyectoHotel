@@ -53,10 +53,10 @@ public class Pieza {
 
     public void descripcionPieza(String descripcionPieza) {
         this.descripcionPieza = descripcionPieza;
+    }
     
     @Override
     public String toString() {
-        return "Pieza{" + "id=" + id + ", tipoPieza=" + tipoPieza + ", precioNoche=" + precioNoche + '}';
+        return "Pieza{" + "id=" + id + ", tipoPieza=" + tipoPieza + ", precioNoche=" + precioNoche + "Descripcion= " + descripcionPieza + "}";
     }
-
 }
