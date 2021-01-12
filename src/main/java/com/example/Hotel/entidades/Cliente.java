@@ -1,14 +1,19 @@
 package com.example.Hotel.entidades;
 
+import javax.persistence.Entity;
+import javax.persistence.Id;
+
+@Entity
 public class Cliente {
 
-    private int id;
+    @Id
+    private String id;
     private String nombre;
     private String apellido;
-    private int edad;
+    private Integer edad;
     private String mail;
 
-    public Cliente(int id, String nombre, String apellido, int edad, String mail) {
+    public Cliente(String id, String nombre, String apellido, Integer edad, String mail) {
         this.id = id;
         this.nombre = nombre;
         this.apellido = apellido;
@@ -16,11 +21,11 @@ public class Cliente {
         this.mail = mail;
     }
 
-    public int getId() {
+    public String getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(String id) {
         this.id = id;
     }
 
@@ -40,11 +45,11 @@ public class Cliente {
         this.apellido = apellido;
     }
 
-    public int getEdad() {
+    public Integer getEdad() {
         return edad;
     }
 
-    public void setEdad(int edad) {
+    public void setEdad(Integer edad) {
         this.edad = edad;
     }
 
@@ -55,6 +60,10 @@ public class Cliente {
     public void setMail(String mail) {
         this.mail = mail;
     }
-    
-    
+
+    @Override
+    public String toString() {
+        return "Cliente{" + "id=" + id + ", nombre=" + nombre + ", apellido=" + apellido + ", edad=" + edad + ", mail=" + mail + '}';
+    }
+
 }
