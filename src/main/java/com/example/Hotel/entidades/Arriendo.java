@@ -3,6 +3,7 @@ package com.example.Hotel.entidades;
 import java.util.Date;
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import javax.persistence.ManyToOne;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 import org.springframework.format.annotation.DateTimeFormat;
@@ -19,16 +20,14 @@ public class Arriendo {
     @DateTimeFormat(pattern = "yyyy-MM-dd")
     private Date fechaRetiro;
     private Integer numDias;
-    
-    @OneToOne
+    @ManyToOne
     private Cliente cliente;
-    
-    @OneToOne
+    @ManyToOne
     private Pieza pieza;
-    
+
     private Integer cotizacion;
 
-    public Arriendo(String id, Date fechaIngreso, Date fechaRetiro,Integer numDias, Cliente cliente, Pieza pieza, Integer cotizacion) {
+    public Arriendo(String id, Date fechaIngreso, Date fechaRetiro, Integer numDias, Cliente cliente, Pieza pieza, Integer cotizacion) {
         this.id = id;
         this.fechaIngreso = fechaIngreso;
         this.fechaRetiro = fechaRetiro;
@@ -40,8 +39,6 @@ public class Arriendo {
 
     public Arriendo() {
     }
-    
-    
 
     public String getId() {
         return id;
@@ -75,7 +72,6 @@ public class Arriendo {
         this.numDias = numDias;
     }
 
-    
     public Cliente getCliente() {
         return cliente;
     }
@@ -104,5 +100,5 @@ public class Arriendo {
     public String toString() {
         return "Arriendo{" + "id=" + id + ", fechaIngreso=" + fechaIngreso + ", fechaRetiro=" + fechaRetiro + ", cliente=" + cliente + ", pieza=" + pieza + ", cotizacion=" + cotizacion + '}';
     }
- 
+
 }
