@@ -6,8 +6,10 @@ import org.springframework.stereotype.Service;
 @Service
 public class ClienteServicio {
 
+    private final ClienteRepositorio clienteRepositorio;
+    
     @Autowired
-    private ClienteRepositorio clienteRepositorio;
+    
     
     public void crearCliente(String id, String nombre, String apellido, Integer edad, String mail){
         Cliente
