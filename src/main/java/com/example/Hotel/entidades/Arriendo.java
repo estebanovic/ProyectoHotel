@@ -1,18 +1,21 @@
 package com.example.Hotel.entidades;
 
 import java.util.Date;
+import javax.persistence.Entity;
+import javax.persistence.Id;
 
-
+@Entity
 public class Arriendo {
-    
+
+    @Id
     private String id;
     private Date fechaIngreso;
     private Date fechaRetiro;
     Cliente cliente;
     Pieza pieza;
-    private int cotizacion;
+    private Integer cotizacion;
 
-    public Arriendo(String id, Date fechaIngreso, Date fechaRetiro, Cliente cliente, Pieza pieza, int cotizacion) {
+    public Arriendo(String id, Date fechaIngreso, Date fechaRetiro, Cliente cliente, Pieza pieza, Integer cotizacion) {
         this.id = id;
         this.fechaIngreso = fechaIngreso;
         this.fechaRetiro = fechaRetiro;
@@ -61,13 +64,17 @@ public class Arriendo {
         this.pieza = pieza;
     }
 
-    public int getCotizacion() {
+    public Integer getCotizacion() {
         return cotizacion;
     }
 
-    public void setCotizacion(int cotizacion) {
+    public void setCotizacion(Integer cotizacion) {
         this.cotizacion = cotizacion;
     }
-    
-    
+
+    @Override
+    public String toString() {
+        return "Arriendo{" + "id=" + id + ", fechaIngreso=" + fechaIngreso + ", fechaRetiro=" + fechaRetiro + ", cliente=" + cliente + ", pieza=" + pieza + ", cotizacion=" + cotizacion + '}';
+    }
+
 }
