@@ -10,11 +10,13 @@ import java.time.temporal.ChronoUnit;
 import java.util.Date;
 import java.util.List;
 import java.util.Optional;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 @Service
 public class ArriendoServicio {
     
+    @Autowired
     private ArriendoRepositorio arriendoRepositorio;
     
     public void crearArriendo(String id, Date fechaIngreso, Date fechaRetiro, Cliente cliente, Pieza pieza){
