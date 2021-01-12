@@ -8,7 +8,7 @@ public class Cliente {
     private int edad;
     private String mail;
 
-    public ClienteEntidad(int id, String nombre, String apellido, int edad, String mail) {
+    public Cliente(int id, String nombre, String apellido, int edad, String mail) {
         this.id = id;
         this.nombre = nombre;
         this.apellido = apellido;
