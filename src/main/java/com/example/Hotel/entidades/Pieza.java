@@ -16,7 +16,7 @@ public class Pieza {
         this.id = id;
         this.tipoPieza = tipoPieza;
         this.precioNoche = precioNoche;
-        this.descripcionPieza = descripcionPieza
+        this.descripcionPieza = descripcionPieza;
     }
 
     public Pieza() {
