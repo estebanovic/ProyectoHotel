@@ -18,14 +18,16 @@ public class Arriendo {
     @Temporal(TemporalType.DATE)
     @DateTimeFormat(pattern = "yyyy-MM-dd")
     private Date fechaRetiro;
+    private Integer numDias;
     Cliente cliente;
     Pieza pieza;
     private Integer cotizacion;
 
-    public Arriendo(String id, Date fechaIngreso, Date fechaRetiro, Cliente cliente, Pieza pieza, Integer cotizacion) {
+    public Arriendo(String id, Date fechaIngreso, Date fechaRetiro,Integer numDias, Cliente cliente, Pieza pieza, Integer cotizacion) {
         this.id = id;
         this.fechaIngreso = fechaIngreso;
         this.fechaRetiro = fechaRetiro;
+        this.numDias = numDias;
         this.cliente = cliente;
         this.pieza = pieza;
         this.cotizacion = cotizacion;
@@ -60,6 +62,15 @@ public class Arriendo {
         this.fechaRetiro = fechaRetiro;
     }
 
+    public Integer getNumDias() {
+        return numDias;
+    }
+
+    public void setNumDias(Integer numDias) {
+        this.numDias = numDias;
+    }
+
+    
     public Cliente getCliente() {
         return cliente;
     }
