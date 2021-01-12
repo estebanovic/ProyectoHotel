@@ -1,6 +1,7 @@
 package com.example.Hotel.servicios;
 
 import com.example.Hotel.entidades.Cliente;
+import com.example.Hotel.repositorios.ClienteRepositorio;
 import java.util.List;
 import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
