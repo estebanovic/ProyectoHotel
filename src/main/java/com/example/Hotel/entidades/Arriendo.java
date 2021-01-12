@@ -3,15 +3,25 @@ package com.example.Hotel.entidades;
 import java.util.Date;
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import javax.persistence.ManyToOne;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
+import org.springframework.format.annotation.DateTimeFormat;
 
 @Entity
 public class Arriendo {
 
     @Id
     private String id;
+    @Temporal(TemporalType.DATE)
+    @DateTimeFormat(pattern = "yyyy-MM-dd")
     private Date fechaIngreso;
+    @Temporal(TemporalType.DATE)
+    @DateTimeFormat(pattern = "yyyy-MM-dd")
     private Date fechaRetiro;
+    @ManyToOne
     Cliente cliente;
+    @ManyToOne
     Pieza pieza;
     private Integer cotizacion;
 
