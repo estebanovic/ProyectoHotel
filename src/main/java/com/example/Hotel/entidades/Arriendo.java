@@ -19,8 +19,13 @@ public class Arriendo {
     @DateTimeFormat(pattern = "yyyy-MM-dd")
     private Date fechaRetiro;
     private Integer numDias;
-    Cliente cliente;
-    Pieza pieza;
+    
+    @OneToOne
+    private Cliente cliente;
+    
+    @OneToOne
+    private Pieza pieza;
+    
     private Integer cotizacion;
 
     public Arriendo(String id, Date fechaIngreso, Date fechaRetiro,Integer numDias, Cliente cliente, Pieza pieza, Integer cotizacion) {
