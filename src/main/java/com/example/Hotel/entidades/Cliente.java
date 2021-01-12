@@ -16,6 +16,10 @@ public class Cliente {
         this.mail = mail;
     }
 
+    public Cliente() {
+    }
+    
+
     public int getId() {
         return id;
     }
