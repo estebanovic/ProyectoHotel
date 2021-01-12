@@ -11,7 +11,7 @@ import org.springframework.stereotype.Service;
 public class ClienteServicio {
 
     @Autowired
-    private final ClienteRepositorio clienteRepositorio;
+    private ClienteRepositorio clienteRepositorio;
 
     public void crearCliente(String id, String nombre, String apellido, Integer edad, String mail) {
         Cliente cliente = new Cliente();
