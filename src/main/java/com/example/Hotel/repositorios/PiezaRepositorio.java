@@ -9,6 +9,6 @@ package com.example.Hotel.repositorios;
  *
  * @author cris1
  */
-public class PiezaRepositorio {
+public interface PiezaRepositorio {
     
 }
