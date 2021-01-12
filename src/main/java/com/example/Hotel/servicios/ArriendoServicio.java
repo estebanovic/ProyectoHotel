@@ -2,6 +2,7 @@ package com.example.Hotel.servicios;
 
 import com.example.Hotel.entidades.Cliente;
 import com.example.Hotel.entidades.Pieza;
+import com.example.Hotel.repositorios.ArriendoRepositorio;
 import java.util.Date;
 import org.springframework.stereotype.Service;
 
