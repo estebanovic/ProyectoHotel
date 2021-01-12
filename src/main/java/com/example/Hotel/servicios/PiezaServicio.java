@@ -13,17 +13,17 @@ public class PiezaServicio {
 
     @Autowired
     private PiezaRepositorio piezaRepositorio;
-    
-    public void crearPieza(String id, String tipoPieza, Integer precioNoche){
+
+    public void crearPieza(String id, String tipoPieza, Integer precioNoche) {
         Pieza pieza = new Pieza();
         pieza.setId(id);
         pieza.setTipoPieza(tipoPieza);
         pieza.setPrecioNoche(precioNoche);
-        
+
         piezaRepositorio.save(pieza);
     }
-    
-    public void editarPieza(String id, String tipoPieza, Integer precioNoche) throws Exception{
+
+    public void editarPieza(String id, String tipoPieza, Integer precioNoche) throws Exception {
         Optional<Pieza> respuesta = piezaRepositorio.findById(id);
         if (respuesta.isPresent()) {
             Pieza pieza = respuesta.get();
@@ -35,10 +35,11 @@ public class PiezaServicio {
             throw new Exception("ERROR");
         }
     }
-    
-    public List<Pieza> listarPiezas(){
+
+    public List<Pieza> listarPiezas() {
         return piezaRepositorio.findAll();
     }
+
     public void eliminarPieza(String id) throws Exception {
         Optional<Pieza> respuesta = piezaRepositorio.findById(id);
         if (respuesta.isPresent()) {

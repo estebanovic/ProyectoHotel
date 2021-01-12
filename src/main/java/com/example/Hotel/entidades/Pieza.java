@@ -22,7 +22,6 @@ public class Pieza {
     public Pieza() {
     }
 
-
     public String getId() {
         return id;
     }
@@ -58,6 +57,5 @@ public class Pieza {
     @Override
     public String toString() {
         return "Pieza{" + "id=" + id + ", tipoPieza=" + tipoPieza + ", precioNoche=" + precioNoche + "Descripcion= " + descripcionPieza + "}";
-
     }
 }
