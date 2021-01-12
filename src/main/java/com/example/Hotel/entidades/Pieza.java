@@ -19,7 +19,7 @@ public class Pieza {
         this.descripcionPieza = descripcionPieza;
     }
 
-    public Pieza() {
+    public Pieza(){
     }
 
     public String getId() {
