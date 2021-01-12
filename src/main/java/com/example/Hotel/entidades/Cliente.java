@@ -1,6 +1,6 @@
 package com.example.Hotel.entidades;
 
-public class ClienteEntidad {
+public class Cliente {
 
     private int id;
     private String nombre;
