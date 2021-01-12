@@ -81,5 +81,5 @@ public class Arriendo {
     public String toString() {
         return "Arriendo{" + "id=" + id + ", fechaIngreso=" + fechaIngreso + ", fechaRetiro=" + fechaRetiro + ", cliente=" + cliente + ", pieza=" + pieza + ", cotizacion=" + cotizacion + '}';
     }
-
+ 
 }
