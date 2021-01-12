@@ -1,6 +1,12 @@
 package com.example.Hotel.entidades;
 
+import javax.persistence.Entity;
+import javax.persistence.Id;
+
+@Entity
 public class Pieza {
+
+    @Id
     private String id;
     private String tipoPieza;
     private Integer precioNoche;
@@ -34,6 +40,10 @@ public class Pieza {
     public void setPrecioNoche(Integer precioNoche) {
         this.precioNoche = precioNoche;
     }
-    
-    
+
+    @Override
+    public String toString() {
+        return "Pieza{" + "id=" + id + ", tipoPieza=" + tipoPieza + ", precioNoche=" + precioNoche + '}';
+    }
+
 }
