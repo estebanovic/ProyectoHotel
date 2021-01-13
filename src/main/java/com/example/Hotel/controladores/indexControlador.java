@@ -14,6 +14,5 @@ public class indexControlador {
     @GetMapping("")
     public String index(){
         return"index.html";
-    }
-    
+    }    
 }
