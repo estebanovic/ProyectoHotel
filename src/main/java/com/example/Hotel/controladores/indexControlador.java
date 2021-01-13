@@ -11,7 +11,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 public class indexControlador {
     
     
-    @GetMapping("/")
+    @GetMapping("")
     public String index(){
         return"index.html";
     }
