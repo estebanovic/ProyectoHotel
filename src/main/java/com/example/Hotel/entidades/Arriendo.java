@@ -1,24 +1,43 @@
 package com.example.Hotel.entidades;
 
 import java.util.Date;
+import javax.persistence.Entity;
+import javax.persistence.Id;
+import javax.persistence.ManyToOne;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
+import org.springframework.format.annotation.DateTimeFormat;
 
-
+@Entity
 public class Arriendo {
-    
-    private String id;
-    private Date fechaIngreso;
-    private Date fechaRetiro;
-    Cliente cliente;
-    Pieza pieza;
-    private int cotizacion;
 
-    public Arriendo(String id, Date fechaIngreso, Date fechaRetiro, Cliente cliente, Pieza pieza, int cotizacion) {
+    @Id
+    private String id;
+    @Temporal(TemporalType.DATE)
+    @DateTimeFormat(pattern = "yyyy-MM-dd")
+    private Date fechaIngreso;
+    @Temporal(TemporalType.DATE)
+    @DateTimeFormat(pattern = "yyyy-MM-dd")
+    private Date fechaRetiro;
+    private Integer numDias;
+    @ManyToOne
+    private Cliente cliente;
+    @ManyToOne
+    private Pieza pieza;
+
+    private Integer cotizacion;
+
+    public Arriendo(String id, Date fechaIngreso, Date fechaRetiro, Integer numDias, Cliente cliente, Pieza pieza, Integer cotizacion) {
         this.id = id;
         this.fechaIngreso = fechaIngreso;
         this.fechaRetiro = fechaRetiro;
+        this.numDias = numDias;
         this.cliente = cliente;
         this.pieza = pieza;
         this.cotizacion = cotizacion;
+    }
+
+    public Arriendo() {
     }
 
     public String getId() {
@@ -45,6 +64,14 @@ public class Arriendo {
         this.fechaRetiro = fechaRetiro;
     }
 
+    public Integer getNumDias() {
+        return numDias;
+    }
+
+    public void setNumDias(Integer numDias) {
+        this.numDias = numDias;
+    }
+
     public Cliente getCliente() {
         return cliente;
     }
@@ -61,13 +88,17 @@ public class Arriendo {
         this.pieza = pieza;
     }
 
-    public int getCotizacion() {
+    public Integer getCotizacion() {
         return cotizacion;
     }
 
-    public void setCotizacion(int cotizacion) {
+    public void setCotizacion(Integer cotizacion) {
         this.cotizacion = cotizacion;
     }
-    
-    
+
+    @Override
+    public String toString() {
+        return "Arriendo{" + "id=" + id + ", fechaIngreso=" + fechaIngreso + ", fechaRetiro=" + fechaRetiro + ", cliente=" + cliente + ", pieza=" + pieza + ", cotizacion=" + cotizacion + '}';
+    }
+
 }
