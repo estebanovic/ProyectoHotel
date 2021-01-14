@@ -19,16 +19,20 @@ public class Arriendo {
     @Temporal(TemporalType.DATE)
     @DateTimeFormat(pattern = "yyyy-MM-dd")
     private Date fechaRetiro;
+
+    private Integer numDias;
     @ManyToOne
-    Cliente cliente;
+    private Cliente cliente;
     @ManyToOne
-    Pieza pieza;
+    private Pieza pieza;
+
     private Integer cotizacion;
 
-    public Arriendo(String id, Date fechaIngreso, Date fechaRetiro, Cliente cliente, Pieza pieza, Integer cotizacion) {
+    public Arriendo(String id, Date fechaIngreso, Date fechaRetiro, Integer numDias, Cliente cliente, Pieza pieza, Integer cotizacion) {
         this.id = id;
         this.fechaIngreso = fechaIngreso;
         this.fechaRetiro = fechaRetiro;
+        this.numDias = numDias;
         this.cliente = cliente;
         this.pieza = pieza;
         this.cotizacion = cotizacion;
@@ -36,8 +40,6 @@ public class Arriendo {
 
     public Arriendo() {
     }
-    
-    
 
     public String getId() {
         return id;
@@ -61,6 +63,14 @@ public class Arriendo {
 
     public void setFechaRetiro(Date fechaRetiro) {
         this.fechaRetiro = fechaRetiro;
+    }
+
+    public Integer getNumDias() {
+        return numDias;
+    }
+
+    public void setNumDias(Integer numDias) {
+        this.numDias = numDias;
     }
 
     public Cliente getCliente() {

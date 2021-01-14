@@ -10,16 +10,17 @@ public class Pieza {
     private String id;
     private String tipoPieza;
     private Integer precioNoche;
+    private String descripcionPieza;
 
-    public Pieza(String id, String tipoPieza, Integer precioNoche) {
+    public Pieza(String id, String tipoPieza, Integer precioNoche, String descripcionPieza) {
         this.id = id;
         this.tipoPieza = tipoPieza;
         this.precioNoche = precioNoche;
+        this.descripcionPieza = descripcionPieza;
     }
 
-    public Pieza() {
+    public Pieza(){
     }
-    
 
     public String getId() {
         return id;
@@ -45,9 +46,17 @@ public class Pieza {
         this.precioNoche = precioNoche;
     }
 
+    public String descripcionPieza() {
+        return descripcionPieza;
+    }
+
+    public void descripcionPieza(String descripcionPieza) {
+        this.descripcionPieza = descripcionPieza;
+    }
+
     @Override
     public String toString() {
-        return "Pieza{" + "id=" + id + ", tipoPieza=" + tipoPieza + ", precioNoche=" + precioNoche + '}';
+        return "Pieza{" + "id=" + id + ", tipoPieza=" + tipoPieza + ", precioNoche=" + precioNoche + ", descripcionPieza=" + descripcionPieza + '}';
     }
 
 }
