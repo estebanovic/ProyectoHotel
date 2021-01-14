@@ -1,13 +1,15 @@
 
 package com.example.Hotel.controladores;
 
+import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
 
-@RestController
+@Controller
+@RequestMapping("/") //localhost:8080/
 public class indexControlador {
 
-    @RequestMapping("/index.html")
+    @GetMapping("/")
     public String home(){
         return "index.html";
     }
