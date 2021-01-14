@@ -12,10 +12,10 @@ import org.springframework.web.bind.annotation.RequestMapping;
 
 @Controller
 @RequestMapping("/")
-public class aboutControlador {
+public class galleryControlador {
     
-    @GetMapping("/about")
-    public String about(){
-        return"about.html";
+    @GetMapping("/gallery")
+    public String gallery(){
+        return"gallery.html";
     }
 }
