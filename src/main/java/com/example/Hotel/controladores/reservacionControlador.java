@@ -15,10 +15,10 @@ import org.springframework.web.bind.annotation.RequestMapping;
  */
 @Controller
 @RequestMapping("/")
-public class formControlador {
+public class reservacionControlador {
     
-    @GetMapping("/form")
+    @GetMapping("/reservacion")
     public String contact(){
-        return"form.html";
+        return"reservacion.html";
     }
 }
