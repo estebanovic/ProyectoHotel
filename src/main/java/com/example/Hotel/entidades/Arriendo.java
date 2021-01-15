@@ -19,6 +19,7 @@ public class Arriendo {
     @Temporal(TemporalType.DATE)
     @DateTimeFormat(pattern = "yyyy-MM-dd")
     private Date fechaRetiro;
+
     private Integer numDias;
     @ManyToOne
     private Cliente cliente;
