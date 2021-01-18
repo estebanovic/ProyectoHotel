@@ -33,26 +33,35 @@
                     <div class="card shadow">
                         <div class="card-body">           
                             <form>
-                                <div class="form-group">
-                                    <label for="exampleFormControlInput1">Nombre</label>
-                                    <input type="text" class="form-control" id="exampleFormControlInput1" placeholder="Nombre">
+                                    <div class="form-floating mb-6 col-xl-6">
+                <input id="nombre" class="form-control fw-bold" type="text" placeholder="Nombre" required="required" />
+                <label for="nombre">Nombre</label>
+                <div class="invalid-feedback">El nombre es obligatorio</div>
                                 </div>
-                                <div class="form-group">
-                                    <label for="exampleFormControlInput1">Apellido</label>
-                                    <input type="text" class="form-control" id="exampleFormControlInput1" placeholder="Apellido">
+                                <div class="form-floating mb-6 col-xl-6">
+                <input id="apellido" class="form-control fw-bold" type="text" placeholder="Apellido"
+                    required="required" />
+                <label for="apellido">Apellido</label>
+                <div class="invalid-feedback">El apellido es obligatorio</div>
                                 </div>
-                                <div class="form-group">
-                                    <label for="exampleFormControlInput1">RUT</label>
-                                    <input type="text" class="form-control" id="exampleFormControlInput1" placeholder="12345678-k">
-                                </div>
-                                <div class="form-group">
-                                    <label for="exampleFormControlInput1">Edad</label>
-                                    <input type="text" class="form-check" id="exampleFormControlInput1" placeholder="21">
-                                </div>
-                                <div class="form-group">
-                                    <label for="exampleFormControlInput1">Email</label>
-                                    <input type="email" class="form-control" id="exampleFormControlInput1" placeholder="nombre@ejemplo.com">
-                                </div>
+                                <div class="form-floating mb-6 col-xl-6">
+                <input id="RUT" class="form-control fw-bold" type="text" placeholder="11.111.111-9"
+                    required="required" />
+                <label for="RUT">RUT</label>
+                <div class="invalid-feedback">El RUT es obligatorio</div>
+            </div>
+                                <div class="form-floating mb-6 col-xl-6">
+                <input id="Edad" class="form-control fw-bold" type="text" placeholder="21"
+                    required="required" />
+                <label for="edad">Edad</label>
+                <div class="invalid-feedback">La edad es obligatorio</div>
+            </div>
+                                <div class="form-floating mb-6 col-xl-6">
+                <input id="Email" class="form-control fw-bold" type="text" placeholder="Email"
+                    required="required" />
+                <label for="Email">Email</label>
+                <div class="invalid-feedback">El Email es obligatorio</div>
+            </div>
                                 <div class="col-md-8 text-right">
                                 <button type="submit" value="submit" class="btn theme_btn button_hover">Enviar reserva</button>
                             </div>
