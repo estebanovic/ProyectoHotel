@@ -17,26 +17,27 @@ public class ClienteServicio {
         Cliente cliente = new Cliente();
         
         try {
-            if(cliente.getId()==null || cliente.getId().isEmpty()){
-            throw new Exception ("El cliente debe tener una ID valida");
-        }
-        if(cliente.getNombre()==null || cliente.getNombre().isEmpty()){
-            throw new Exception ("El cliente debe indicar un NOMBRE valido");
-        }
+            if(id==null || id.isEmpty()){
+                throw new Exception ("El cliente debe tener una ID valida");
+            }
+            
+            if(nombre==null || nombre.isEmpty()){
+                throw new Exception ("El cliente debe indicar un NOMBRE valido");
+            }
         
-        if(cliente.getApellido()==null || cliente.getApellido().isEmpty()){
+        if(apellido==null || apellido.isEmpty()){
             throw new Exception ("El cliente debe indicar un APELLIDO valido");
         }
         
-        if(cliente.getEdad()==null || cliente.getEdad()<18){
+        if(edad==null || edad<18){
             throw new Exception("El cliente debe tener una EDAD VALIDA");
         }
         
-        if(cliente.getMail()==null || cliente.getMail().isEmpty()){
+        if(mail==null || mail.isEmpty()){
             throw new Exception("El cliente debe indicar el CORREO ELECTRONICO");
         }
         
-        if(cliente.getMail().contains("@")==false){
+        if(mail.contains("@")==false){
             throw new Exception("El cliente debe indicar un CORREO ELECTRONICO valido");
         }
             
@@ -59,24 +60,24 @@ public class ClienteServicio {
         if (respuesta.isPresent()) {
             Cliente cliente = respuesta.get();
             
-    try {
-        if(cliente.getNombre()==null || cliente.getNombre().isEmpty()){
-            throw new Exception ("El cliente debe indicar un NOMBRE valido");
-        }
+    try { 
+            if(nombre==null || nombre.isEmpty()){
+                throw new Exception ("El cliente debe indicar un NOMBRE valido");
+            }
         
-        if(cliente.getApellido()==null || cliente.getApellido().isEmpty()){
+        if(apellido==null || apellido.isEmpty()){
             throw new Exception ("El cliente debe indicar un APELLIDO valido");
         }
         
-        if(cliente.getEdad()==null || cliente.getEdad()<18){
+        if(edad==null || edad<18){
             throw new Exception("El cliente debe tener una EDAD VALIDA");
         }
         
-        if(cliente.getMail()==null || cliente.getMail().isEmpty()){
+        if(mail==null || mail.isEmpty()){
             throw new Exception("El cliente debe indicar el CORREO ELECTRONICO");
         }
         
-        if(cliente.getMail().contains("@")==false){
+        if(mail.contains("@")==false){
             throw new Exception("El cliente debe indicar un CORREO ELECTRONICO valido");
         }
             
@@ -110,4 +111,5 @@ public class ClienteServicio {
         }
     }
 }
+
 
