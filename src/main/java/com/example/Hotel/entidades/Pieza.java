@@ -46,11 +46,11 @@ public class Pieza {
         this.precioNoche = precioNoche;
     }
 
-    public String descripcionPieza() {
+    public String getDescripcionPieza() {
         return descripcionPieza;
     }
 
-    public void descripcionPieza(String descripcionPieza) {
+    public void setDescripcionPieza(String descripcionPieza) {
         this.descripcionPieza = descripcionPieza;
     }
 
