@@ -50,6 +50,7 @@
                         <div class="col-md-3">
                             <h2>Reserva<br> Tu cuarto</h2>
                         </div>
+                        <!--<form id"formulario" class="needs-validation" th:action=@{/reservacion} novalidate> -->
                         <div class="col-md-9">
                             <div class="boking_table">
                                 <div class="row">
@@ -57,7 +58,7 @@
                                         <div class="book_tabel_item">
                                             <div class="form-group">
                                                 <div class='input-group date' id='datetimepicker11'>
-                                                    <input type='text' class="form-control" placeholder="Fecha llegada"/>
+                                                    <input type='text' class="form-control"  placeholder="Fecha llegada" required="required"/>
                                                     <span class="input-group-addon">
                                                         <i class="fa fa-calendar" aria-hidden="true"></i>
                                                     </span>
@@ -65,7 +66,7 @@
                                             </div>
                                             <div class="form-group">
                                                 <div class='input-group date' id='datetimepicker1'>
-                                                    <input type='text' class="form-control" placeholder="Fecha retirada"/>
+                                                    <input type='text' class="form-control"  placeholder="Fecha retirada" required="required"/>
                                                     <span class="input-group-addon">
                                                         <i class="fa fa-calendar" aria-hidden="true"></i>
                                                     </span>
@@ -84,11 +85,12 @@
                                                 </select>
                                             </div>
                                             </div>
-                                            <a class="book_now_btn button_hover" href="/reservacion">Reservar ahora</a>
+                                        <a class="book_now_btn button_hover" href="/reservacion"  >Reservar ahora</a>
                                         </div>
                                     </div>
                                 </div>
                             </div>
+                        </form>
                         </div>
                     </div>
                 </div>
@@ -443,5 +445,17 @@ Copyright &copy;<script>document.write(new Date().getFullYear());</script> Todos
         <script src="js/stellar.js"></script>
         <script src="vendors/lightbox/simpleLightbox.min.js"></script>
         <script src="js/custom.js"></script>
+        
+        <!--<script>
+            const from = document.getElementById("formulario");
+            form.addEventListener("submit", (event) => {
+            if (!form.checkValidity()) {
+                event.preventDefault();
+                event.stopPropagation();
+                }
+                
+                form.classList.add("was-validated");
+            }, false);
+            </script> -->
     </body>
 </html>
