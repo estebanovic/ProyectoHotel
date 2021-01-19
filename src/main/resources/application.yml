@@ -4,9 +4,9 @@ spring:
         url: jdbc:mysql://localhost:3306/hotel?zeroDateTimeBehavior=convertToNull&serverTimezone=UTC
         username: root
         password: root
-jpa:
-    hibernate:
-        ddl-auto: update
-    properties:
+    jpa:
         hibernate:
-            dialect: org.hibernate.dialect.MySQL5InnoDBDialect
+            ddl-auto: update
+        properties:
+            hibernate:
+                dialect: org.hibernate.dialect.MySQL5InnoDBDialect

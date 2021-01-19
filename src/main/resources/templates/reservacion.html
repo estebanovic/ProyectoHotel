@@ -32,40 +32,40 @@
                 <div class="col-sm-8 align-self-center">
                     <div class="card shadow">
                         <div class="card-body">           
-                            <form>
-                                    <div class="form-floating mb-6 col-xl-6">
-                <input id="nombre" class="form-control fw-bold" type="text" placeholder="Nombre" required="required" />
-                <label for="nombre">Nombre</label>
-                <div class="invalid-feedback">El nombre es obligatorio</div>
+                            <form action="/reservar" method="POST">
+                                <div class="form-floating mb-6 col-xl-6">
+                                    <input name="nombre" class="form-control fw-bold" type="text" placeholder="Nombre" required="required" />
+                                    <label for="nombre">Nombre</label>
+                                    <div class="invalid-feedback">El nombre es obligatorio</div>
                                 </div>
                                 <div class="form-floating mb-6 col-xl-6">
-                <input id="apellido" class="form-control fw-bold" type="text" placeholder="Apellido"
-                    required="required" />
-                <label for="apellido">Apellido</label>
-                <div class="invalid-feedback">El apellido es obligatorio</div>
+                                    <input name="apellido" class="form-control fw-bold" type="text" placeholder="Apellido"
+                                           required="required" />
+                                    <label for="apellido">Apellido</label>
+                                    <div class="invalid-feedback">El apellido es obligatorio</div>
                                 </div>
                                 <div class="form-floating mb-6 col-xl-6">
-                <input id="RUT" class="form-control fw-bold" type="text" placeholder="11.111.111-9"
-                    required="required" />
-                <label for="RUT">RUT</label>
-                <div class="invalid-feedback">El RUT es obligatorio</div>
-            </div>
+                                    <input name="rut" class="form-control fw-bold" type="text" placeholder="11.111.111-9"
+                                           required="required" />
+                                    <label for="RUT">RUT</label>
+                                    <div class="invalid-feedback">El RUT es obligatorio</div>
+                                </div>
                                 <div class="form-floating mb-6 col-xl-6">
-                <input id="Edad" class="form-control fw-bold" type="text" placeholder="21"
-                    required="required" />
-                <label for="edad">Edad</label>
-                <div class="invalid-feedback">La edad es obligatorio</div>
-            </div>
+                                    <input name="edad" class="form-control fw-bold" type="text" placeholder="21"
+                                           required="required" />
+                                    <label for="edad">Edad</label>
+                                    <div class="invalid-feedback">La edad es obligatorio</div>
+                                </div>
                                 <div class="form-floating mb-6 col-xl-6">
-                <input id="Email" class="form-control fw-bold" type="text" placeholder="Email"
-                    required="required" />
-                <label for="Email">Email</label>
-                <div class="invalid-feedback">El Email es obligatorio</div>
-            </div>
+                                    <input name="mail" class="form-control fw-bold" type="text" placeholder="Email"
+                                           required="required" />
+                                    <label for="Email">Email</label>
+                                    <div class="invalid-feedback">El Email es obligatorio</div>
+                                </div>
                                 <div class="col-md-8 text-right">
-                                <button type="submit" value="submit" class="btn theme_btn button_hover">Enviar reserva</button>
-                            </div>
-                                
+                                    <button type="submit" value="submit" class="btn theme_btn button_hover">Enviar reserva</button>
+                                </div>
+
                             </form>              
                         </div>
                     </div>
