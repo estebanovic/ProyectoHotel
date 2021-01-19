@@ -490,6 +490,12 @@ button:focus {
     width: 100%;
     min-height: 800px;
 }
+.reservacion_form{
+    position: relative;
+    overflow: hidden;
+    width: 100%;
+    min-height: 1000px;
+}
 
 .overlay {
     position: absolute;
