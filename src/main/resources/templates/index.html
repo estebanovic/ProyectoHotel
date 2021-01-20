@@ -1,6 +1,6 @@
 <!doctype html>
 
-<html lang="es">
+<html lang="es" xmlns:th="http://www.thymeleaf.org"> 
     <head>
         <!-- Required meta tags -->
         <meta charset="utf-8">
@@ -50,7 +50,7 @@
                         <div class="col-md-3">
                             <h2>Reserva<br> Tu cuarto</h2>
                         </div>
-                        <!--<form id"formulario" class="needs-validation" th:action=@{/reservacion} novalidate> -->
+                        <form id="formulario" class="needs-validation" th:action="@{/reservacion}" novalidate> 
                         <div class="col-md-9">
                             <div class="boking_table">
                                 <div class="row">
@@ -58,18 +58,21 @@
                                         <div class="book_tabel_item">
                                             <div class="form-group">
                                                 <div class='input-group date' id='datetimepicker11'>
-                                                    <input type='text' class="form-control"  placeholder="Fecha llegada" required="required"/>
+                                                    <input id ="fechainicial" class=" form-control" type='text'   placeholder="Fecha llegada" required="required"/>
                                                     <span class="input-group-addon">
                                                         <i class="fa fa-calendar" aria-hidden="true"></i>
                                                     </span>
+                                                    <div class="invalid-feedback" >Complete campo</div>
                                                 </div>
                                             </div>
                                             <div class="form-group">
                                                 <div class='input-group date' id='datetimepicker1'>
-                                                    <input type='text' class="form-control"  placeholder="Fecha retirada" required="required"/>
+                                                    <input id ="fechafinal" class=" form-control" type='text'   placeholder="Fecha retirada" required="required"/>
                                                     <span class="input-group-addon">
                                                         <i class="fa fa-calendar" aria-hidden="true"></i>
                                                     </span>
+                                                    <div class="invalid-feedback" >Complete campo</div>
+                                                
                                                 </div>
                                             </div>
                                         </div>
@@ -77,15 +80,18 @@
                                     <div class="col-md-4">
                                         <div class="book_tabel_item">
                                             <div class="input-group">
-                                                <select class="wide">
-                                                    <option data-display="Tipo de pieza">Tipo de pieza</option>
+                                                <select class="wide" required="required">
+                                                    <option data-display="Tipo de pieza">Tipo de pieza</option> 
                                                     <option value="Normal">Normal</option>
                                                     <option value="VIP">VIP</option>
                                                     <option value="Precidencial">Precidencial</option>
                                                 </select>
+                                                <div class="invalid-feedback" >Complete campo</div>
+                                                
                                             </div>
                                             </div>
-                                        <a class="book_now_btn button_hover" href="/reservacion"  >Reservar ahora</a>
+                                        <!--<a class="book_now_btn button_hover"   href="/reservacion">Reservar ahora</a> -->
+                                        <button type="submit"  class="book_now_btn button_hover">Reservar ahora</button>
                                         </div>
                                     </div>
                                 </div>
@@ -446,8 +452,8 @@ Copyright &copy;<script>document.write(new Date().getFullYear());</script> Todos
         <script src="vendors/lightbox/simpleLightbox.min.js"></script>
         <script src="js/custom.js"></script>
         
-        <!--<script>
-            const from = document.getElementById("formulario");
+        <script>
+            const form = document.getElementById("formulario");
             form.addEventListener("submit", (event) => {
             if (!form.checkValidity()) {
                 event.preventDefault();
@@ -456,6 +462,6 @@ Copyright &copy;<script>document.write(new Date().getFullYear());</script> Todos
                 
                 form.classList.add("was-validated");
             }, false);
-            </script> -->
+            </script> 
     </body>
 </html>
