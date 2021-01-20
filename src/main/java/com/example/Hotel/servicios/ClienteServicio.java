@@ -49,6 +49,7 @@ public class ClienteServicio {
 
         clienteRepositorio.save(cliente);
         } catch (Exception e) {
+            System.out.println(e.getMessage());
             throw new Exception(" ERROR AL GUARDAR EL CLIENTE ");
 
         }
