@@ -9,7 +9,7 @@
         <link rel="icon" href="image/estrella.png" type="image/png">
         <title>Proyecto final</title>
 
-        
+
 
         <!-- Bootstrap CSS -->
         <link rel="stylesheet" href="css/bootstrap.css">
@@ -34,72 +34,76 @@
 
         <!--================Banner Area =================-->
         <section class="banner_area">
-            <div class="booking_table d_flex align-items-center">
-            	<div class="overlay bg-parallax" data-stellar-ratio="0.9" data-stellar-vertical-offset="0" data-background=""></div>
-				<div class="container">
-					<div class="banner_content text-center">
-						<h6>Lejos de la vida monótona</h6>
-						<h2>Relaja tu mente</h2>
-						<p>Si está mirando casetas vírgenes en la web, es posible que se sienta muy confundido<br> diferencia de precio. Puede ver algunos por tan solo $17 cada uno.</p>
-					</div>
-				</div>
-            </div>
-            <div class="hotel_booking_area position">
-                <div class="container">
-                    <div class="hotel_booking_table">
-                        <div class="col-md-3">
-                            <h2>Reserva<br> Tu cuarto</h2>
+            <form id="formulario" class="needs-validation" th:action="@{/reservacion}" novalidate>
+                <div class="booking_table d_flex align-items-center">
+                    <div class="overlay bg-parallax" data-stellar-ratio="0.9" data-stellar-vertical-offset="0" data-background=""></div>
+                    <div class="container">
+                        <div class="banner_content text-center">
+                            <h6>Lejos de la vida monótona</h6>
+                            <h2>Relaja tu mente</h2>
+                            <p>Si está mirando casetas vírgenes en la web, es posible que se sienta muy confundido<br> diferencia de precio. Puede ver algunos por tan solo $17 cada uno.</p>
                         </div>
-                        <form id="formulario" class="needs-validation" th:action="@{/reservacion}" novalidate> 
-                        <div class="col-md-9">
-                            <div class="boking_table">
-                                <div class="row">
-                                    <div class="col-md-4">
-                                        <div class="book_tabel_item">
-                                            <div class="form-group">
-                                                <div class='input-group date' id='datetimepicker11'>
-                                                    <input id ="fechainicial" class=" form-control" type='text'   placeholder="Fecha llegada" required="required"/>
-                                                    <span class="input-group-addon">
-                                                        <i class="fa fa-calendar" aria-hidden="true"></i>
-                                                    </span>
-                                                    <div class="invalid-feedback" >Complete campo</div>
+                    </div>
+                </div>
+                <div class="hotel_booking_area position">
+                    <div class="container">
+                        <div class="hotel_booking_table">
+                            <div class="col-md-3">
+                                <h2>Reserva<br> Tu cuarto</h2>
+                            </div>
+
+                            <div class="col-md-9">
+                                <div class="boking_table">
+                                    <div class="row">
+                                        <div class="col-md-4">
+                                            <div class="book_tabel_item">
+                                                <div class="form-group">
+                                                    <div class='input-group date' id='datetimepicker11'>
+                                                        <input id ="fechainicial" class=" form-control" type='text' 
+                                                               placeholder="Fecha llegada" required="required"/>
+                                                        <span class="input-group-addon">
+                                                            <i class="fa fa-calendar" aria-hidden="true"></i>
+                                                        </span>
+                                                        <div class="invalid-feedback" >Complete campo</div>
+                                                    </div>
                                                 </div>
-                                            </div>
-                                            <div class="form-group">
-                                                <div class='input-group date' id='datetimepicker1'>
-                                                    <input id ="fechafinal" class=" form-control" type='text'   placeholder="Fecha retirada" required="required"/>
-                                                    <span class="input-group-addon">
-                                                        <i class="fa fa-calendar" aria-hidden="true"></i>
-                                                    </span>
-                                                    <div class="invalid-feedback" >Complete campo</div>
-                                                
+                                                <div class="form-group">
+                                                    <div class='input-group date' id='datetimepicker1'>
+                                                        <input id ="fechafinal" class=" form-control" type='text' 
+                                                               placeholder="Fecha retirada" required="required"/>
+                                                        <span class="input-group-addon">
+                                                            <i class="fa fa-calendar" aria-hidden="true"></i>
+                                                        </span>
+                                                        <div class="invalid-feedback" >Complete campo</div>
+
+                                                    </div>
                                                 </div>
                                             </div>
                                         </div>
-                                    </div>
-                                    <div class="col-md-4">
-                                        <div class="book_tabel_item">
-                                            <div class="input-group">
-                                                <select class="wide" required="required">
-                                                    <option data-display="Tipo de pieza">Tipo de pieza</option> 
-                                                    <option value="Normal">Normal</option>
-                                                    <option value="VIP">VIP</option>
-                                                    <option value="Precidencial">Precidencial</option>
-                                                </select>
-                                                <div class="invalid-feedback" >Complete campo</div>
-                                                
+                                        <div class="col-md-4">
+                                            <div class="book_tabel_item">
+                                                <div class="input-group">
+                                                    <select class="wide" required="required">
+                                                        <option data-display="Tipo de pieza">Tipo de pieza</option> 
+                                                        <option value="Normal">Normal</option>
+                                                        <option value="VIP">VIP</option>
+                                                        <option value="Precidencial">Precidencial</option>
+                                                    </select>
+                                                    <div class="invalid-feedback" >Complete campo</div>
+
+                                                </div>
                                             </div>
-                                            </div>
-                                        <!--<a class="book_now_btn button_hover"   href="/reservacion">Reservar ahora</a> -->
-                                        <button type="submit"  class="book_now_btn button_hover">Reservar ahora</button>
+                                            <!--<a class="book_now_btn button_hover"   href="/reservacion">Reservar ahora</a> -->
+                                            <button type="submit"  class="book_now_btn button_hover">Reservar ahora</button>
                                         </div>
                                     </div>
                                 </div>
                             </div>
-                        </form>
+
                         </div>
                     </div>
                 </div>
+            </form>
         </section>
         <!--================Banner Area =================-->
 
@@ -423,8 +427,8 @@
                 <div class="border_line"></div>
                 <div class="row footer-bottom d-flex justify-content-between align-items-center">
                     <p class="col-lg-8 col-sm-12 footer-text m-0"><!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
-Copyright &copy;<script>document.write(new Date().getFullYear());</script> Todos los derechos reservados | Esta plantilla está hecha con <i class="fa fa-heart-o" aria-hidden="true"></i> por <a href="#" target="_blank">Grupo 3</a>
-<!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. --></p>
+                        Copyright &copy;<script>document.write(new Date().getFullYear());</script> Todos los derechos reservados | Esta plantilla está hecha con <i class="fa fa-heart-o" aria-hidden="true"></i> por <a href="#" target="_blank">Grupo 3</a>
+                        <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. --></p>
                     <div class="col-lg-4 col-sm-12 footer-social">
                         <a href="#"><i class="fa fa-facebook"></i></a>
                         <a href="#"><i class="fa fa-twitter"></i></a>
@@ -434,7 +438,7 @@ Copyright &copy;<script>document.write(new Date().getFullYear());</script> Todos
                 </div>
             </div>
         </footer>
-		<!--================ End footer Area  =================-->
+        <!--================ End footer Area  =================-->
 
 
         <!-- Optional JavaScript -->
@@ -451,17 +455,17 @@ Copyright &copy;<script>document.write(new Date().getFullYear());</script> Todos
         <script src="js/stellar.js"></script>
         <script src="vendors/lightbox/simpleLightbox.min.js"></script>
         <script src="js/custom.js"></script>
-        
+
         <script>
             const form = document.getElementById("formulario");
             form.addEventListener("submit", (event) => {
             if (!form.checkValidity()) {
-                event.preventDefault();
-                event.stopPropagation();
-                }
-                
-                form.classList.add("was-validated");
+            event.preventDefault();
+            event.stopPropagation();
+            }
+
+            form.classList.add("was-validated");
             }, false);
-            </script> 
+        </script> 
     </body>
 </html>
