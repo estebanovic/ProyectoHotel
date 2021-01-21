@@ -67,7 +67,7 @@
                                         </div>
                                         <div class="col-md-4">
                                                 <div class="input-group mb-4">
-                                                    <select class="wide" name="pieza" required="required">
+                                                    <select class="custom-select" name="pieza" required="required">
                                                         <option selected disabled value="" data-display="Tipo de pieza" >Tipo de pieza</option> 
                                                         <option value="Normal">Normal</option>
                                                         <option value="VIP">VIP</option>
@@ -443,7 +443,7 @@
             const form = document.getElementById("formulario");
             form.addEventListener("submit", (event) => {
                 const err = document.getElementById("pieza");
-                err.style.display = "none";
+                
                         if (err.value === "") {
                                     err.style.display= "block";
                         }
