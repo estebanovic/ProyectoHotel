@@ -1,10 +1,13 @@
 package com.example.Hotel.controladores;
 
 import com.example.Hotel.servicios.ClienteServicio;
+import java.util.Date;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -24,7 +27,7 @@ public class reservacionControlador {
     }
     
     @PostMapping("/reservar")
-    public String reservar(@RequestParam String nombre,@RequestParam String apellido,@RequestParam String rut,@RequestParam Integer edad,@RequestParam String mail){
+    public String reservar(ModelMap model, @RequestParam String nombre,@RequestParam String apellido,@RequestParam String rut,@RequestParam Integer edad,@RequestParam String mail){
         try {
             clienteServicio.crearCliente(rut, nombre, apellido, edad, mail);
         } catch (Exception ex) {

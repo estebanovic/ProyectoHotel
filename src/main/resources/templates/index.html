@@ -5,12 +5,8 @@
         <!-- Required meta tags -->
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-
         <link rel="icon" href="image/estrella.png" type="image/png">
-        <title>Proyecto final</title>
-
- 
-
+        <title>Hotel estrella</title>
         <!-- Bootstrap CSS -->
         <link rel="stylesheet" href="css/bootstrap.css">
         <link rel="stylesheet" href="vendors/linericon/style.css">
@@ -34,7 +30,7 @@
 
         <!--================Banner Area =================-->
         <section class="banner_area">
-            <form id="formulario" class="needs-validation" th:action="@{/reservacion}" novalidate>
+            <form id="formulario" action="/reservacion" method="GET" class="needs-validation" novalidate>
                 <div class="booking_table d_flex align-items-center">
                     <div class="overlay bg-parallax" data-stellar-ratio="0.9" data-stellar-vertical-offset="0" data-background=""></div>
                     <div class="container">
@@ -57,41 +53,28 @@
                                     <div class="row">
                                         <div class="col-md-4">
                                             <div class="book_tabel_item">
-                                                <div class="form-group">
-                                                    <div class='input-group date' id='datetimepicker11'>
-                                                        <input id ="fechainicial" class=" form-control" type='text' 
+                                                <div class="form-group mb-4" >
+                                                        <input id ="fechaIngreso" name="fechaIngreso" class=" form-control" type="date" 
                                                                placeholder="Fecha llegada" required="required"/>
-                                                        <span class="input-group-addon">
-                                                            <i class="fa fa-calendar" aria-hidden="true"></i>
-                                                        </span>
                                                         <div class="invalid-feedback" >Complete campo</div>
-                                                    </div>
                                                 </div>
                                                 <div class="form-group">
-                                                    <div class='input-group date' id='datetimepicker1'>
-                                                        <input id ="fechafinal" class=" form-control" type='text' 
+                                                        <input id ="fechaRetiro" name="fechaRetiro"  class=" form-control fw-bold" type="date" 
                                                                placeholder="Fecha retirada" required="required"/>
-                                                        <span class="input-group-addon">
-                                                            <i class="fa fa-calendar" aria-hidden="true"></i>
-                                                        </span>
                                                         <div class="invalid-feedback" >Complete campo</div>
-
-                                                    </div>
                                                 </div>
                                             </div>
                                         </div>
                                         <div class="col-md-4">
-                                            <div class="book_tabel_item">
-                                                <div class="input-group">
-                                                    <select class="wide" required="required">
-                                                        <option data-display="Tipo de pieza">Tipo de pieza</option> 
+                                                <div class="input-group mb-4">
+                                                    <select class="wide" name="pieza" required="required">
+                                                        <option selected disabled value="" data-display="Tipo de pieza" >Tipo de pieza</option> 
                                                         <option value="Normal">Normal</option>
                                                         <option value="VIP">VIP</option>
                                                         <option value="Precidencial">Precidencial</option>
                                                     </select>
-                                                    <div class="invalid-feedback" >Complete campo</div>
+                                                    <div id="pieza" class="invalid-feedback" >Complete campo</div>
 
-                                                </div>
                                             </div>
                                             <!--<a class="book_now_btn button_hover"   href="/reservacion">Reservar ahora</a> -->
                                             <button type="submit"  class="book_now_btn button_hover">Reservar ahora</button>
@@ -459,6 +442,11 @@
         <script>
             const form = document.getElementById("formulario");
             form.addEventListener("submit", (event) => {
+                const err = document.getElementById("pieza");
+                err.style.display = "none";
+                        if (err.value === "") {
+                                    err.style.display= "block";
+                        }
             if (!form.checkValidity()) {
             event.preventDefault();
             event.stopPropagation();
