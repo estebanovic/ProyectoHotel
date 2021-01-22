@@ -18,7 +18,7 @@
         <link rel="stylesheet" href="css/style.css">
         <link rel="stylesheet" href="css/responsive.css">
     </head>
-    <body>
+    <body onload="calculate()">
         <!--================Header Area =================-->
         <header class="header_area">
             <div class="container">
@@ -36,26 +36,26 @@
                                 <div class="form-group mb-4">
                                     <label for="example-date-input" >Fecha llegada</label>
                                     <div>
-                                        <input name="fechaIngreso" class="form-control" type="date" value="2021-01-19"  id="fechaIngreso" required="required" th:value="${fechaIngreso}">
+                                        <input name="fechaIngreso" class="form-control" type="date" value="2021-01-19"  id="fechaIngreso" required="required" th:value="${fechaIngreso}" onchange="calculate()">
                                     </div>
                                     <div class="invalid-feedback">La fecha de llegada es obligatoria</div>
                                 </div>
                                 <div class="form-group mb-4">
                                     <label for="example-date-input">Fecha retirada</label>
                                     <div>
-                                        <input name="fechaRetiro" class="form-control" type="date"  value="2021-01-25" id="fechaRetiro" required="required" th:value="${fechaRetiro}">
+                                        <input name="fechaRetiro" class="form-control" type="date"  value="2021-01-25" id="fechaRetiro" required="required" th:value="${fechaRetiro}" onchange="calculate()">
                                     </div>
                                     <div class="invalid-feedback">La fecha de retirada es obligatoria</div>
                                 </div>
                                 <div class="form-row mb-4">
                                     <div class="form-floating mb-6 col-xl-6">
                                         <label for="pieza">Pieza</label>
-                                        <select class="wide" name="pieza" required="required" />
-                                                    <option selected disabled value="" data-display="Tipo de pieza" >Tipo de pieza</option> 
-                                                    <option value="Normal" th:selected="${pieza=='Normal'}">Normal</option>
-                                                    <option value="VIP" th:selected="${pieza=='VIP'}">VIP</option>
-                                                    <option value="Presidencial" th:selected="${pieza=='Presidencial'}">Presidencial</option>
-                                                </select>
+                                        <select class="wide" name="pieza" required="required" onchange="calculate()"/>
+                                        <option selected disabled value="" data-display="Tipo de pieza" >Tipo de pieza</option> 
+                                        <option value="Normal" th:selected="${pieza=='Normal'}">Normal</option>
+                                        <option value="VIP" th:selected="${pieza=='VIP'}">VIP</option>
+                                        <option value="Presidencial" th:selected="${pieza=='Presidencial'}">Presidencial</option>
+                                        </select>
                                         <div class="invalid-feedback">La pieza es obligatoria</div>
                                     </div>
                                 </div>
@@ -95,17 +95,40 @@
                                         <div class="invalid-feedback">El Email es obligatorio</div>
                                     </div>
                                 </div>
-                                <!--<script>
-                                    function myFunction() {
-                                        var date1 = new Date(document.getElementById("fechaIngreso").value);
-                                        var date2 = new Date(document.getElementById("fechaRetiro").value);
-                                        var time = date2.getTime() - date1.getTiem();
-                                        var days = time / (1000 * 3600 * 24);
-                                        document.getElementById("demo").innerHTML = "PRECIO: " + (days * 1000);
+                                
+                                <h2 class="title_color" id="output">El valor es: </h2>
+                                <script >
+                                    function calculate() {
+                                        var input1 = document.getElementsByName('fechaIngreso')[0].value;
+                                        var input2 = document.getElementsByName('fechaRetiro')[0].value;
+                                        var input3 = document.getElementsByName('pieza')[0].value;
+
+                                        var fechaIngreso = new Date(input1);
+                                        var fechaRetiro = new Date(input2);
+                                        console.log(input3);
+
+                                        var precio = 0;
+                                        switch (input3) {
+                                            case "Normal":
+                                                precio = 5000;
+                                                break;
+                                            case "VIP":
+                                                precio = 10000;
+                                                break;
+                                            case "Presidencial":
+                                                precio = 15000;
+                                                break;
+                                        }
+
+                                        console.log("precio" + precio);
+
+                                        var diferenciaDeTiempo = fechaRetiro.getTime() - fechaIngreso.getTime();
+                                        var dias = diferenciaDeTiempo / (1000 * 3600 * 24);
+
+                                        document.getElementById('output').innerHTML =
+                                                `<div class='result'>${"El valor es: " + (dias * precio).toLocaleString()}</div>`;
                                     }
                                 </script>
-                                <p id="demo"></p> -->
-
                                 <div class="col-md-8 text-right">
                                     <button type="submit" value="submit" class="btn theme_btn button_hover">Enviar reserva</button>
                                 </div>
