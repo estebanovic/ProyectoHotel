@@ -55,6 +55,15 @@ public class ClienteServicio {
         }
    
     }
+    public Cliente BuscarCliente(String id) throws Exception {
+        Optional<Cliente> respuesta = clienteRepositorio.findById(id);
+        if (respuesta.isPresent()) {
+            return respuesta.get();
+        }else{
+            return null;
+        }
+        
+    }
 
     public void editarCliente(String id, String nombre, String apellido, Integer edad, String mail) throws Exception {
         Optional<Cliente> respuesta = clienteRepositorio.findById(id);
