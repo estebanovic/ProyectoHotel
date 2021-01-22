@@ -47,7 +47,7 @@ public class PiezaServicio {
 
     }
 
-    public Pieza BuscarPieza(String id) throws Exception {
+    public Pieza BuscarPiezaPorID(String id) throws Exception {
         Optional<Pieza> respuesta = piezaRepositorio.findById(id);
         if (respuesta.isPresent()) {
             return respuesta.get();

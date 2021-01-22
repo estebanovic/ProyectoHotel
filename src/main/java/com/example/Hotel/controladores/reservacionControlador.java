@@ -35,7 +35,6 @@ public class reservacionControlador {
     
     @PostMapping("/reservacion")
     public String contact(ModelMap model,@RequestParam String fechaIngreso, @RequestParam String fechaRetiro,@RequestParam String pieza){
-        System.out.println(fechaIngreso +" "+ fechaRetiro +" " + pieza);
         model.put("fechaIngreso", fechaIngreso);
         model.put("fechaRetiro", fechaRetiro);
         model.put("pieza", pieza);
@@ -44,11 +43,25 @@ public class reservacionControlador {
     
     @PostMapping("/reservar")
     public String reservar(ModelMap model, @RequestParam String fechaIngreso, @RequestParam String fechaRetiro,@RequestParam String pieza, @RequestParam String nombre,@RequestParam String apellido,@RequestParam String rut,@RequestParam Integer edad,@RequestParam String mail){
+        String idPieza = "";
+        System.out.println(pieza);
         try {
+            switch (pieza){
+                case "Normal":
+                    idPieza = "1";
+                    break;
+                case "VIP":
+                    idPieza = "2";
+                    break;
+                case "Presidencial":
+                    idPieza = "3";
+                    break;
+            }
+            System.out.println(idPieza);
             clienteServicio.crearCliente(rut, nombre, apellido, edad, mail);
             Date ingreso =new SimpleDateFormat("yyyy-MM-dd").parse(fechaIngreso);
             Date ingreso2 =new SimpleDateFormat("yyyy-MM-dd").parse(fechaRetiro);
-            arriendoServicio.crearArriendo("2", ingreso, ingreso2, clienteServicio.BuscarCliente(rut), piezaServicio.BuscarPieza("1"));
+            arriendoServicio.crearArriendo(ingreso, ingreso2, clienteServicio.BuscarCliente(rut), piezaServicio.BuscarPiezaPorID(idPieza));
         } catch (Exception ex) {
             Logger.getLogger(reservacionControlador.class.getName()).log(Level.SEVERE, null, ex);
         }

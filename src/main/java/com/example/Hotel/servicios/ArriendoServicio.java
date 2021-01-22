@@ -10,6 +10,7 @@ import java.time.temporal.ChronoUnit;
 import java.util.Date;
 import java.util.List;
 import java.util.Optional;
+import java.util.UUID;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -19,7 +20,7 @@ public class ArriendoServicio {
     @Autowired
     private ArriendoRepositorio arriendoRepositorio;
 
-    public void crearArriendo(String id, Date fechaIngreso, Date fechaRetiro, Cliente cliente, Pieza pieza) {
+    public void crearArriendo(Date fechaIngreso, Date fechaRetiro, Cliente cliente, Pieza pieza) {
         Arriendo arriendo = new Arriendo();
 
         LocalDate localFechaIngreso = fechaIngreso.toInstant().atZone(ZoneId.systemDefault()).toLocalDate();
@@ -28,8 +29,8 @@ public class ArriendoServicio {
         int numDias = (int) ChronoUnit.DAYS.between(localFechaIngreso, localFechaRetiro);
         int cotizacion = numDias * pieza.getPrecioNoche();
         
-        System.out.println(localFechaIngreso);
-        System.out.println(localFechaRetiro);
+        UUID uuid =UUID.randomUUID();
+        String id = uuid.toString();
         
         arriendo.setId(id);
         arriendo.setFechaIngreso(fechaIngreso);
