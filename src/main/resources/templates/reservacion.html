@@ -95,7 +95,7 @@
                                         <div class="invalid-feedback">El Email es obligatorio</div>
                                     </div>
                                 </div>
-                                
+
                                 <h2 class="title_color" id="output">El valor es: </h2>
                                 <script >
                                     function calculate() {
@@ -105,8 +105,6 @@
 
                                         var fechaIngreso = new Date(input1);
                                         var fechaRetiro = new Date(input2);
-                                        console.log(input3);
-
                                         var precio = 0;
                                         switch (input3) {
                                             case "Normal":
@@ -119,14 +117,13 @@
                                                 precio = 15000;
                                                 break;
                                         }
-
-                                        console.log("precio" + precio);
-
                                         var diferenciaDeTiempo = fechaRetiro.getTime() - fechaIngreso.getTime();
                                         var dias = diferenciaDeTiempo / (1000 * 3600 * 24);
 
+
                                         document.getElementById('output').innerHTML =
                                                 `<div class='result'>${"El valor es: " + (dias * precio).toLocaleString()}</div>`;
+
                                     }
                                 </script>
                                 <div class="col-md-8 text-right">
