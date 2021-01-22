@@ -43,8 +43,7 @@ public class reservacionControlador {
     
     @PostMapping("/reservar")
     public String reservar(ModelMap model, @RequestParam String fechaIngreso, @RequestParam String fechaRetiro,@RequestParam String pieza, @RequestParam String nombre,@RequestParam String apellido,@RequestParam String rut,@RequestParam Integer edad,@RequestParam String mail){
-        String idPieza = "";
-        System.out.println(pieza);
+        String idPieza = null;
         try {
             switch (pieza){
                 case "Normal":
@@ -57,7 +56,6 @@ public class reservacionControlador {
                     idPieza = "3";
                     break;
             }
-            System.out.println(idPieza);
             clienteServicio.crearCliente(rut, nombre, apellido, edad, mail);
             Date ingreso =new SimpleDateFormat("yyyy-MM-dd").parse(fechaIngreso);
             Date ingreso2 =new SimpleDateFormat("yyyy-MM-dd").parse(fechaRetiro);
