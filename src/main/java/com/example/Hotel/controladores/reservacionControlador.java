@@ -48,7 +48,7 @@ public class reservacionControlador {
             clienteServicio.crearCliente(rut, nombre, apellido, edad, mail);
             Date ingreso =new SimpleDateFormat("yyyy-MM-dd").parse(fechaIngreso);
             Date ingreso2 =new SimpleDateFormat("yyyy-MM-dd").parse(fechaRetiro);
-            arriendoServicio.crearArriendo("1", ingreso, ingreso2, clienteServicio.BuscarCliente(rut), piezaServicio.BuscarPieza("1"));
+            arriendoServicio.crearArriendo("2", ingreso, ingreso2, clienteServicio.BuscarCliente(rut), piezaServicio.BuscarPieza("1"));
         } catch (Exception ex) {
             Logger.getLogger(reservacionControlador.class.getName()).log(Level.SEVERE, null, ex);
         }

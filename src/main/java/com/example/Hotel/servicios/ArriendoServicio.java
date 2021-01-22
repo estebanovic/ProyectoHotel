@@ -23,11 +23,14 @@ public class ArriendoServicio {
         Arriendo arriendo = new Arriendo();
 
         LocalDate localFechaIngreso = fechaIngreso.toInstant().atZone(ZoneId.systemDefault()).toLocalDate();
-        LocalDate localFechaRetiro = fechaIngreso.toInstant().atZone(ZoneId.systemDefault()).toLocalDate();
+        LocalDate localFechaRetiro = fechaRetiro.toInstant().atZone(ZoneId.systemDefault()).toLocalDate();
 
         int numDias = (int) ChronoUnit.DAYS.between(localFechaIngreso, localFechaRetiro);
         int cotizacion = numDias * pieza.getPrecioNoche();
-
+        
+        System.out.println(localFechaIngreso);
+        System.out.println(localFechaRetiro);
+        
         arriendo.setId(id);
         arriendo.setFechaIngreso(fechaIngreso);
         arriendo.setFechaRetiro(fechaRetiro);
