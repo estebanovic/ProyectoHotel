@@ -30,7 +30,7 @@
 
         <!--================Banner Area =================-->
         <section class="banner_area">
-            <form id="formulario" action="/reservacion" method="GET" class="needs-validation" novalidate>
+            <form name="form" id="formulario" action="/reservacion" method="POST" class="needs-validation" novalidate>
                 <div class="booking_table d_flex align-items-center">
                     <div class="overlay bg-parallax" data-stellar-ratio="0.9" data-stellar-vertical-offset="0" data-background=""></div>
                     <div class="container">
@@ -54,26 +54,24 @@
                                         <div class="col-md-4">
                                             <div class="book_tabel_item">
                                                 <div class="form-group mb-4" >
-                                                        <input id ="fechaIngreso" name="fechaIngreso" class=" form-control" type="date" 
-                                                               placeholder="Fecha llegada" required="required"/>
-                                                        <div class="invalid-feedback" >Complete campo</div>
+                                                    <input name="fechaIngreso" class="form-control" type="date" id="example-date-input" required="required" th:value="${fechaIngreso}"/>
+                                                    <div class="invalid-feedback" >Complete campo</div>
                                                 </div>
                                                 <div class="form-group">
-                                                        <input id ="fechaRetiro" name="fechaRetiro"  class=" form-control fw-bold" type="date" 
-                                                               placeholder="Fecha retirada" required="required"/>
-                                                        <div class="invalid-feedback" >Complete campo</div>
+                                                    <input name="fechaRetiro" class="form-control" type="date" id="example-date-input" required="required" th:value="${fechaRetiro}"/>
+                                                    <div class="invalid-feedback" >Complete campo</div>
                                                 </div>
                                             </div>
                                         </div>
                                         <div class="col-md-4">
-                                                <div class="input-group mb-4">
-                                                    <select class="wide" name="pieza" required="required">
-                                                        <option selected disabled value="" data-display="Tipo de pieza" >Tipo de pieza</option> 
-                                                        <option value="Normal">Normal</option>
-                                                        <option value="VIP">VIP</option>
-                                                        <option value="Precidencial">Precidencial</option>
-                                                    </select>
-                                                    <div id="pieza" class="invalid-feedback" >Complete campo</div>
+                                            <div class="input-group mb-4">
+                                                <select class="wide" name="pieza" required="required">
+                                                    <option selected disabled value="" data-display="Tipo de pieza" >Tipo de pieza</option> 
+                                                    <option value="Normal">Normal</option>
+                                                    <option value="VIP">VIP</option>
+                                                    <option value="Presidencial">Presidencial</option>
+                                                </select>
+                                                <div id="pieza" class="invalid-feedback" >Complete campo</div>
 
                                             </div>
                                             <!--<a class="book_now_btn button_hover"   href="/reservacion">Reservar ahora</a> -->
@@ -440,20 +438,20 @@
         <script src="js/custom.js"></script>
 
         <script>
-            const form = document.getElementById("formulario");
-            form.addEventListener("submit", (event) => {
-                const err = document.getElementById("pieza");
-                err.style.display= "block";
-                        if (err.value === "") {
-                                    err.style.display= "block";
-                        }
-            if (!form.checkValidity()) {
-            event.preventDefault();
-            event.stopPropagation();
-            }
+                            const form = document.getElementById("formulario");
+                            form.addEventListener("submit", (event) => {
+                                const err = document.getElementById("pieza");
+                                err.style.display = "block";
+                                if (err.value === "") {
+                                    err.style.display = "block";
+                                }
+                                if (!form.checkValidity()) {
+                                    event.preventDefault();
+                                    event.stopPropagation();
+                                }
 
-            form.classList.add("was-validated");
-            }, false);
+                                form.classList.add("was-validated");
+                            }, false);
         </script> 
     </body>
 </html>

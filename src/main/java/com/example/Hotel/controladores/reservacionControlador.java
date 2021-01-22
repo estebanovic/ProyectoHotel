@@ -1,6 +1,9 @@
 package com.example.Hotel.controladores;
 
+import com.example.Hotel.servicios.ArriendoServicio;
 import com.example.Hotel.servicios.ClienteServicio;
+import com.example.Hotel.servicios.PiezaServicio;
+import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -21,15 +24,28 @@ public class reservacionControlador {
     @Autowired
     private ClienteServicio clienteServicio;
     
-    @GetMapping("/reservacion")
-    public String contact(){
+    @Autowired
+    private ArriendoServicio arriendoServicio;
+    
+    @Autowired
+    private PiezaServicio piezaServicio;
+    
+    @PostMapping("/reservacion")
+    public String contact(ModelMap model,@RequestParam String fechaIngreso, @RequestParam String fechaRetiro,@RequestParam String pieza){
+        System.out.println(fechaIngreso +" "+ fechaRetiro +" " + pieza);
+        model.put("fechaIngreso", fechaIngreso);
+        model.put("fechaRetiro", fechaRetiro);
+        model.put("pieza", pieza);
         return"reservacion.html";
     }
     
     @PostMapping("/reservar")
-    public String reservar(ModelMap model, @RequestParam String nombre,@RequestParam String apellido,@RequestParam String rut,@RequestParam Integer edad,@RequestParam String mail){
+    public String reservar(ModelMap model, @RequestParam String fechaIngreso, @RequestParam String fechaRetiro,@RequestParam String pieza, @RequestParam String nombre,@RequestParam String apellido,@RequestParam String rut,@RequestParam Integer edad,@RequestParam String mail){
         try {
             clienteServicio.crearCliente(rut, nombre, apellido, edad, mail);
+            Date ingreso =new SimpleDateFormat("yyyy-MM-dd").parse(fechaIngreso);
+            Date ingreso2 =new SimpleDateFormat("yyyy-MM-dd").parse(fechaRetiro);
+            arriendoServicio.crearArriendo("1", ingreso, ingreso2, clienteServicio.BuscarCliente(rut), piezaServicio.BuscarPieza("1"));
         } catch (Exception ex) {
             Logger.getLogger(reservacionControlador.class.getName()).log(Level.SEVERE, null, ex);
         }

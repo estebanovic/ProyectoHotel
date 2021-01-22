@@ -36,28 +36,29 @@
                                 <div class="form-group mb-4">
                                     <label for="example-date-input" >Fecha llegada</label>
                                     <div>
-                                        <input name="fechaIngreso" class="form-control" type="date" value="2021-01-19" id="example-date-input" required="required" >
+                                        <input name="fechaIngreso" class="form-control" type="date" value="2021-01-19"  id="fechaIngreso" required="required" th:value="${fechaIngreso}">
                                     </div>
                                     <div class="invalid-feedback">La fecha de llegada es obligatoria</div>
                                 </div>
                                 <div class="form-group mb-4">
                                     <label for="example-date-input">Fecha retirada</label>
                                     <div>
-                                        <input name="fechaRetiro" class="form-control" type="date" value="2021-01-25" id="example-date-input" required="required" >
+                                        <input name="fechaRetiro" class="form-control" type="date"  value="2021-01-25" id="fechaRetiro" required="required" th:value="${fechaRetiro}">
                                     </div>
                                     <div class="invalid-feedback">La fecha de retirada es obligatoria</div>
                                 </div>
                                 <div class="form-row mb-4">
                                     <div class="form-floating mb-6 col-xl-6">
                                         <label for="pieza">Pieza</label>
-                                        <select name="pieza" class="form-select fw-bold" required="required" >
-                                            <option value="1">Pieza normal</option>
-                                            <option value="2">Pieza VIP</option>
-                                            <option value="3">Pieza presidencial</option>
-                                        </select>
+                                        <select class="wide" name="pieza" required="required" />
+                                                    <option selected disabled value="" data-display="Tipo de pieza" >Tipo de pieza</option> 
+                                                    <option value="Normal" th:selected="${pieza=='Normal'}">Normal</option>
+                                                    <option value="VIP" th:selected="${pieza=='VIP'}">VIP</option>
+                                                    <option value="Presidencial" th:selected="${pieza=='Presidencial'}">Presidencial</option>
+                                                </select>
                                         <div class="invalid-feedback">La pieza es obligatoria</div>
                                     </div>
-                                    </div>
+                                </div>
                                 <div class="form-row mb-4">
                                     <div class="form-floating mb-6 col-xl-6">
                                         <label for="nombre">Nombre</label>
@@ -94,11 +95,21 @@
                                         <div class="invalid-feedback">El Email es obligatorio</div>
                                     </div>
                                 </div>
-                                
+                                <!--<script>
+                                    function myFunction() {
+                                        var date1 = new Date(document.getElementById("fechaIngreso").value);
+                                        var date2 = new Date(document.getElementById("fechaRetiro").value);
+                                        var time = date2.getTime() - date1.getTiem();
+                                        var days = time / (1000 * 3600 * 24);
+                                        document.getElementById("demo").innerHTML = "PRECIO: " + (days * 1000);
+                                    }
+                                </script>
+                                <p id="demo"></p> -->
+
                                 <div class="col-md-8 text-right">
                                     <button type="submit" value="submit" class="btn theme_btn button_hover">Enviar reserva</button>
                                 </div>
-                            </form>              
+                            </form>       
                         </div>
                     </div>
                 </div>
