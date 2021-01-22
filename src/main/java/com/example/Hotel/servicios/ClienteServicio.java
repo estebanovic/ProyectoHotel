@@ -17,15 +17,15 @@ public class ClienteServicio {
         Cliente cliente = new Cliente();
         
         try {
-            if(id==null || id.isEmpty()){
+            if(id==null || id.isEmpty() || id.length()<9){
                 throw new Exception ("El cliente debe tener una ID valida");
             }
             
-            if(nombre==null || nombre.isEmpty()){
+            if(nombre==null || nombre.isEmpty() || nombre.length()<=1){
                 throw new Exception ("El cliente debe indicar un NOMBRE valido");
             }
         
-        if(apellido==null || apellido.isEmpty()){
+        if(apellido==null || apellido.isEmpty() || apellido.length()<=1){
             throw new Exception ("El cliente debe indicar un APELLIDO valido");
         }
         
@@ -37,7 +37,7 @@ public class ClienteServicio {
             throw new Exception("El cliente debe indicar el CORREO ELECTRONICO");
         }
         
-        if(mail.contains("@")==false){
+        if(!mail.contains("@")==false || mail.length()<6){
             throw new Exception("El cliente debe indicar un CORREO ELECTRONICO valido");
         }
             
@@ -55,15 +55,6 @@ public class ClienteServicio {
         }
    
     }
-    public Cliente BuscarCliente(String id) throws Exception {
-        Optional<Cliente> respuesta = clienteRepositorio.findById(id);
-        if (respuesta.isPresent()) {
-            return respuesta.get();
-        }else{
-            return null;
-        }
-        
-    }
 
     public void editarCliente(String id, String nombre, String apellido, Integer edad, String mail) throws Exception {
         Optional<Cliente> respuesta = clienteRepositorio.findById(id);
@@ -71,11 +62,11 @@ public class ClienteServicio {
             Cliente cliente = respuesta.get();
             
     try { 
-            if(nombre==null || nombre.isEmpty()){
+            if(nombre==null || nombre.isEmpty() || nombre.length()<=1){
                 throw new Exception ("El cliente debe indicar un NOMBRE valido");
             }
         
-        if(apellido==null || apellido.isEmpty()){
+        if(apellido==null || apellido.isEmpty() || apellido.length()<=1){
             throw new Exception ("El cliente debe indicar un APELLIDO valido");
         }
         
@@ -87,7 +78,7 @@ public class ClienteServicio {
             throw new Exception("El cliente debe indicar el CORREO ELECTRONICO");
         }
         
-        if(mail.contains("@")==false){
+        if(!mail.contains("@")==false || mail.length()<6){
             throw new Exception("El cliente debe indicar un CORREO ELECTRONICO valido");
         }
             
@@ -121,5 +112,4 @@ public class ClienteServicio {
         }
     }
 }
-
 
