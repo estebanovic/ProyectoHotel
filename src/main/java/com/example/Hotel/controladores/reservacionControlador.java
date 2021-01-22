@@ -1,17 +1,12 @@
 package com.example.Hotel.controladores;
 
-<<<<<<< HEAD
-import com.example.Hotel.servicios.ArriendoServicio;
-import com.example.Hotel.servicios.ClienteServicio;
-import com.example.Hotel.servicios.PiezaServicio;
+
 import java.text.SimpleDateFormat;
-=======
 import com.example.Hotel.entidades.Cliente;
 import com.example.Hotel.entidades.Pieza;
 import com.example.Hotel.servicios.ArriendoServicio;
 import com.example.Hotel.servicios.ClienteServicio;
 import com.example.Hotel.servicios.PiezaServicio;
->>>>>>> 77a09a4123cfbfe567aa9f427778d9e49b3f8238
 import java.util.Date;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -36,9 +31,6 @@ public class reservacionControlador {
     private ClienteServicio clienteServicio;
     
     @Autowired
-    private ArriendoServicio arriendoServicio;
-    
-    @Autowired
     private PiezaServicio piezaServicio;
     
     @PostMapping("/reservacion")
@@ -57,15 +49,6 @@ public class reservacionControlador {
             Date ingreso =new SimpleDateFormat("yyyy-MM-dd").parse(fechaIngreso);
             Date ingreso2 =new SimpleDateFormat("yyyy-MM-dd").parse(fechaRetiro);
             arriendoServicio.crearArriendo("1", ingreso, ingreso2, clienteServicio.BuscarCliente(rut), piezaServicio.BuscarPieza("1"));
-        } catch (Exception ex) {
-            Logger.getLogger(reservacionControlador.class.getName()).log(Level.SEVERE, null, ex);
-        }
-        return"reservacion.html";
-    }
-    @PostMapping("/reservar")
-    public String reservar(ModelMap model, @RequestParam String id,@RequestParam Date fechaIngreso,@RequestParam Date fechaRetiro,@RequestParam Cliente cliente,@RequestParam Pieza pieza){
-        try {
-            arriendoServicio.crearArriendo("1", fechaIngreso, fechaRetiro,clienteServicio.BuscarCliente("20.930.652-2"), piezaServicio.BuscarPieza("1"));
         } catch (Exception ex) {
             Logger.getLogger(reservacionControlador.class.getName()).log(Level.SEVERE, null, ex);
         }
