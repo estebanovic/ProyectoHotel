@@ -54,11 +54,11 @@
                                         <div class="col-md-4">
                                             <div class="book_tabel_item">
                                                 <div class="form-group mb-4" >
-                                                    <input name="fechaIngreso" class="form-control" type="date" id="example-date-input" required="required" th:value="${fechaIngreso}"/>
+                                                    <input name="fechaIngreso" class="form-control" type="text" onfocus="(this.type = 'date')" placeholder="Fecha ingreso" id="example-date-input"  required="required" th:value="${fechaIngreso}" onclick="fechaMinima(); fechaMaxima()"/>
                                                     <div class="invalid-feedback" >Complete campo</div>
                                                 </div>
                                                 <div class="form-group">
-                                                    <input name="fechaRetiro" class="form-control" type="date" id="example-date-input" required="required" th:value="${fechaRetiro}"/>
+                                                    <input name="fechaRetiro" class="form-control" type="text" onfocus="(this.type = 'date')" placeholder="Fecha retiro" id="example-date-input"  required="required" th:value="${fechaRetiro}" onclick="fechaMinima(); fechaMaxima()"/>
                                                     <div class="invalid-feedback" >Complete campo</div>
                                                 </div>
                                             </div>
@@ -453,5 +453,21 @@
                                 form.classList.add("was-validated");
                             }, false);
         </script> 
+        <script>
+            function fechaMinima() {
+                var input1 = new Date(document.getElementsByName('fechaIngreso')[0].value);
+                var input2 = document.getElementsByName('fechaRetiro')[0];
+                input1.setDate(input1.getDate() + 1);
+                input2.setAttribute("min", input1.toISOString().split('T')[0]);
+
+            }
+            function fechaMaxima() {
+                var input1 = new Date(document.getElementsByName('fechaRetiro')[0].value);
+                var input2 = document.getElementsByName('fechaIngreso')[0];
+                input1.setDate(input1.getDate() - 1);
+                input2.setAttribute("max", input1.toISOString().split('T')[0]);
+
+            }
+        </script>
     </body>
 </html>

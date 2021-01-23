@@ -32,18 +32,18 @@
                 <div class="col-sm-8 align-self-center">
                     <div class="card shadow">
                         <div class="card-body">           
-                            <form action="/reservar" method="POST">
+                            <form id="formulario" action="/reservar" method="POST">
                                 <div class="form-group mb-4">
                                     <label for="example-date-input" >Fecha llegada</label>
                                     <div>
-                                        <input name="fechaIngreso" class="form-control" type="date" value="2021-01-19"  id="fechaIngreso" required="required" th:value="${fechaIngreso}" onchange="calculate()">
+                                        <input name="fechaIngreso" class="form-control" type="date" value="2021-01-19"  id="fechaIngreso" required="required" th:value="${fechaIngreso}" onchange="calculate()"onclick="fechaMinima(); fechaMaxima()"/>
                                     </div>
                                     <div class="invalid-feedback">La fecha de llegada es obligatoria</div>
                                 </div>
                                 <div class="form-group mb-4">
                                     <label for="example-date-input">Fecha retirada</label>
                                     <div>
-                                        <input name="fechaRetiro" class="form-control" type="date"  value="2021-01-25" id="fechaRetiro" required="required" th:value="${fechaRetiro}" onchange="calculate()">
+                                        <input name="fechaRetiro" class="form-control" type="date"  value="2021-01-25" id="fechaRetiro" required="required" th:value="${fechaRetiro}" onchange="calculate();" onclick="fechaMinima(); fechaMaxima()"/>
                                     </div>
                                     <div class="invalid-feedback">La fecha de retirada es obligatoria</div>
                                 </div>
@@ -97,35 +97,7 @@
                                 </div>
 
                                 <h2 class="title_color" id="output">El valor es: </h2>
-                                <script >
-                                    function calculate() {
-                                        var input1 = document.getElementsByName('fechaIngreso')[0].value;
-                                        var input2 = document.getElementsByName('fechaRetiro')[0].value;
-                                        var input3 = document.getElementsByName('pieza')[0].value;
 
-                                        var fechaIngreso = new Date(input1);
-                                        var fechaRetiro = new Date(input2);
-                                        var precio = 0;
-                                        switch (input3) {
-                                            case "Normal":
-                                                precio = 5000;
-                                                break;
-                                            case "VIP":
-                                                precio = 10000;
-                                                break;
-                                            case "Presidencial":
-                                                precio = 15000;
-                                                break;
-                                        }
-                                        var diferenciaDeTiempo = fechaRetiro.getTime() - fechaIngreso.getTime();
-                                        var dias = diferenciaDeTiempo / (1000 * 3600 * 24);
-
-
-                                        document.getElementById('output').innerHTML =
-                                                `<div class='result'>${"El valor es: " + (dias * precio).toLocaleString()}</div>`;
-
-                                    }
-                                </script>
                                 <div class="col-md-8 text-right">
                                     <button type="submit" value="submit" class="btn theme_btn button_hover">Enviar reserva</button>
                                 </div>
@@ -233,5 +205,64 @@
     <script src="js/stellar.js"></script>
     <script src="vendors/lightbox/simpleLightbox.min.js"></script>
     <script src="js/custom.js"></script>
+    <script>
+                        const form = document.getElementById("formulario");
+                        form.addEventListener("submit", (event) => {
+                            const err = document.getElementById("pieza");
+                            err.style.display = "block";
+                            if (err.value === "") {
+                                err.style.display = "block";
+                            }
+                            if (!form.checkValidity()) {
+                                event.preventDefault();
+                                event.stopPropagation();
+                            }
+
+                            form.classList.add("was-validated");
+                        }, false);
+    </script> 
+    <script >
+        function calculate() {
+            var input1 = document.getElementsByName('fechaIngreso')[0].value;
+            var input2 = document.getElementsByName('fechaRetiro')[0].value;
+            var input3 = document.getElementsByName('pieza')[0].value;
+
+            var fechaIngreso = new Date(input1);
+            var fechaRetiro = new Date(input2);
+            var precio = 0;
+            switch (input3) {
+                case "Normal":
+                    precio = 5000;
+                    break;
+                case "VIP":
+                    precio = 10000;
+                    break;
+                case "Presidencial":
+                    precio = 15000;
+                    break;
+            }
+            var diferenciaDeTiempo = fechaRetiro.getTime() - fechaIngreso.getTime();
+            var dias = diferenciaDeTiempo / (1000 * 3600 * 24);
+
+
+            document.getElementById('output').innerHTML =
+                    `<div class='result'>${"El valor es: " + (dias * precio).toLocaleString()}</div>`;
+
+        }
+        function fechaMinima() {
+            var input1 = new Date(document.getElementsByName('fechaIngreso')[0].value);
+            var input2 = document.getElementsByName('fechaRetiro')[0];
+            input1.setDate(input1.getDate() + 1);
+            input2.setAttribute("min", input1.toISOString().split('T')[0]);
+
+        }
+        function fechaMaxima() {
+            var input1 = new Date(document.getElementsByName('fechaRetiro')[0].value);
+            var input2 = document.getElementsByName('fechaIngreso')[0];
+            input1.setDate(input1.getDate() - 1);
+            input2.setAttribute("max", input1.toISOString().split('T')[0]);
+
+        }
+    </script>
 </body>
 </html>
