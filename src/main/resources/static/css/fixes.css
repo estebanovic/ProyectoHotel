@@ -1,0 +1,61 @@
+.navbar{
+    border-radius: 1.6% !important; 
+    padding-bottom: 4vh;
+}
+.navbar-brand{
+    margin-top: 3.5vh;
+}
+.barrita::after{
+    content: '';
+    display: block;
+    width: 0;
+    height: 2px;
+    background: #f3c300;
+    transition: width .3s;
+    margin-top: -4vh;
+    ;
+}
+.barrita:hover::after{
+    margin-top: -4vh;
+    width: 100%;
+    transition: width .3s;
+}
+.btn{
+    border-radius: 1.6% !important;
+}
+.hotel_booking_table{
+    border-radius: 1% !important;
+    background: #080e25;
+}
+.book_now_btn{
+    border-radius: 1.6% !important;
+}
+
+.hotel_img img:hover{
+    opacity: .7;
+}
+
+.testimonial_item{
+    height: 270px !important;
+}
+
+.testimonial_item p{
+    margin-top: 2vh;
+    height: 130px !important;
+}
+
+.sec_h4{
+    margin-bottom: auto;
+}
+
+.thumb .img-fluid{
+    opacity: .8;
+}
+
+.footer-area{
+    background: #080e25 !important;
+}
+
+single-footer-widget p{
+    margin-bottom: -8   vh;
+}
