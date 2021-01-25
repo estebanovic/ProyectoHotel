@@ -21,17 +21,7 @@ public class PiezaServicio {
                 throw new Exception("Se debe indicar el id de la pieza");
             }
 
-            if (tipoPieza == null || tipoPieza.isEmpty()) {
-                throw new Exception("Se debe indicar el tipo de pieza");
-            }
-
-            if (precioNoche == null || precioNoche <= 0) {
-                throw new Exception("Se debe indicar el precio por noche");
-            }
-
-            if (descripcionPieza == null || descripcionPieza.isEmpty()) {
-                throw new Exception("Se debe añadir una descripcion de la pieza");
-            }
+            validar(tipoPieza, precioNoche, descripcionPieza);
 
             pieza.setId(id);
             pieza.setTipoPieza(tipoPieza);
@@ -41,7 +31,6 @@ public class PiezaServicio {
             piezaRepositorio.save(pieza);
 
         } catch (Exception e) {
-            e.printStackTrace();
             throw new Exception("ERROR AL CREAR Y GUARDAR PIEZA - FALTAN DATOS");
         }
 
@@ -62,17 +51,7 @@ public class PiezaServicio {
             Pieza pieza = respuesta.get();
             try {
 
-                if (tipoPieza == null || tipoPieza.isEmpty()) {
-                    throw new Exception("Se debe indicar el tipo de pieza");
-                }
-
-                if (precioNoche == null || precioNoche <= 0) {
-                    throw new Exception("Se debe indicar el precio por noche");
-                }
-
-                if (descripcionPieza == null || descripcionPieza.isEmpty()) {
-                    throw new Exception("Se debe añadir una descripcion de la pieza");
-                }
+                validar(tipoPieza, precioNoche, descripcionPieza);
 
                 pieza.setTipoPieza(tipoPieza);
                 pieza.setPrecioNoche(precioNoche);
@@ -101,5 +80,21 @@ public class PiezaServicio {
         } else {
             throw new Exception("ERROR");
         }
+    }
+
+    public void validar(String tipoPieza, Integer precioNoche, String descripcionPieza) throws Exception {
+
+        if (tipoPieza == null || tipoPieza.isEmpty()) {
+            throw new Exception("Se debe indicar el tipo de pieza");
+        }
+
+        if (precioNoche == null || precioNoche <= 0) {
+            throw new Exception("Se debe indicar el precio por noche");
+        }
+
+        if (descripcionPieza == null || descripcionPieza.isEmpty()) {
+            throw new Exception("Se debe añadir una descripcion de la pieza");
+        }
+
     }
 }
