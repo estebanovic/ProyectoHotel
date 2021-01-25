@@ -17,30 +17,13 @@ public class ClienteServicio {
         Cliente cliente = new Cliente();
         
         try {
-            if(id==null || id.isEmpty()){
-                throw new Exception ("El cliente debe tener una ID valida");
+            if (id == null || id.isEmpty()) {
+                throw new Exception("El cliente debe tener una ID valida");
             }
-            
-            if(nombre==null || nombre.isEmpty()){
-                throw new Exception ("El cliente debe indicar un NOMBRE valido");
-            }
-        
-        if(apellido==null || apellido.isEmpty()){
-            throw new Exception ("El cliente debe indicar un APELLIDO valido");
-        }
-        
-        if(edad==null || edad<18){
-            throw new Exception("El cliente debe tener una EDAD VALIDA");
-        }
-        
-        if(mail==null || mail.isEmpty()){
-            throw new Exception("El cliente debe indicar el CORREO ELECTRONICO");
-        }
-        
-        if(mail.contains("@")==false){
-            throw new Exception("El cliente debe indicar un CORREO ELECTRONICO valido");
-        }
-            
+
+            validar(nombre, apellido, edad, mail);
+
+
         cliente.setId(id);
         cliente.setNombre(nombre);
         cliente.setApellido(apellido);
@@ -69,37 +52,19 @@ public class ClienteServicio {
         Optional<Cliente> respuesta = clienteRepositorio.findById(id);
         if (respuesta.isPresent()) {
             Cliente cliente = respuesta.get();
-            
-    try { 
-            if(nombre==null || nombre.isEmpty()){
-                throw new Exception ("El cliente debe indicar un NOMBRE valido");
-            }
-        
-        if(apellido==null || apellido.isEmpty()){
-            throw new Exception ("El cliente debe indicar un APELLIDO valido");
-        }
-        
-        if(edad==null || edad<18){
-            throw new Exception("El cliente debe tener una EDAD VALIDA");
-        }
-        
-        if(mail==null || mail.isEmpty()){
-            throw new Exception("El cliente debe indicar el CORREO ELECTRONICO");
-        }
-        
-        if(mail.contains("@")==false){
-            throw new Exception("El cliente debe indicar un CORREO ELECTRONICO valido");
-        }
-            
-        cliente.setNombre(nombre);
-        cliente.setApellido(apellido);
-        cliente.setEdad(edad);
-        cliente.setMail(mail);
 
-        clienteRepositorio.save(cliente);
-        } catch (Exception e) {
-            throw new Exception(" ERROR AL GUARDAR DATOS DEL CLIENTE ");
-        }
+            try {
+                validar(nombre, apellido, edad, mail);
+
+                cliente.setNombre(nombre);
+                cliente.setApellido(apellido);
+                cliente.setEdad(edad);
+                cliente.setMail(mail);
+
+                clienteRepositorio.save(cliente);
+            } catch (Exception e) {
+                throw new Exception(" ERROR AL GUARDAR DATOS DEL CLIENTE ");
+            }
 
         } else {
             throw new Exception("ERROR - CLIENTE NO ENCONTRADO");
@@ -119,6 +84,30 @@ public class ClienteServicio {
         } else {
             throw new Exception("ERROR - CLIENTE NO ENCONTRADO");
         }
+    }
+    
+    public void validar(String nombre, String apellido, Integer edad, String mail) throws Exception{
+        
+        if(nombre==null || nombre.isEmpty()){
+                throw new Exception ("El cliente debe indicar un NOMBRE valido");
+            }
+        
+        if(apellido==null || apellido.isEmpty()){
+            throw new Exception ("El cliente debe indicar un APELLIDO valido");
+        }
+        
+        if(edad==null || edad<18){
+            throw new Exception("El cliente debe tener una EDAD VALIDA");
+        }
+        
+        if(mail==null || mail.isEmpty()){
+            throw new Exception("El cliente debe indicar el CORREO ELECTRONICO");
+        }
+        
+        if(mail.contains("@")==false){
+            throw new Exception("El cliente debe indicar un CORREO ELECTRONICO valido");
+        }
+        
     }
 }
 
