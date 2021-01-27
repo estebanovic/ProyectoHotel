@@ -1,65 +1,144 @@
 <!DOCTYPE html>
-<!--
-To change this license header, choose License Headers in Project Properties.
-To change this template file, choose Tools | Templates
-and open the template in the editor.
--->
 <html>
     <head>
-        <title>lista de reservas</title>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <link rel="icon" href="image/estrella.png" type="image/png">
-        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet"
-        integrity="sha384-giJF6kkoqNQ00vy+HMDP7azOuL0xtbfIcaT9wjKHr8RbDVddVHyTfAAsrekwKmP1" crossorigin="anonymous" />
+        <title>Lista de Reservas - Hotel Estrella</title>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>        
         <style>
-        .logo {
-            filter: grayscale(1);
-            transition: 500ms;
-        }
+            .logo {
+                filter: grayscale(1);
+                transition: 500ms;
+            }
 
-        .logo:hover {
-            filter: grayscale(0);
-            transition: 500ms;
-        }
+            .logo:hover {
+                filter: grayscale(0);
+                transition: 500ms;
+            }
 
-        h5 a {
-            text-decoration: none;
-        }
+            h5 a {
+                text-decoration: none;
+            }
 
-        h5 a:hover {
-            text-decoration: underline;
-        }
+            h5 a:hover {
+                text-decoration: underline;
+            }
 
-        input::-webkit-inner-spin-button,
-        input::-webkit-outer-spin-button {
-            -webkit-appearance: none;
-            margin: 0;
-        }
+            input::-webkit-inner-spin-button,
+            input::-webkit-outer-spin-button {
+                -webkit-appearance: none;
+                margin: 0;
+            }
 
-        input[type="number"] {
-            -moz-appearance: textfield;
-        }
-    </style>
+            input[type="number"] {
+                -moz-appearance: textfield;
+            }
+        </style>    
     </head>
     <body>
         <nav class="navbar navbar-expand-md navbar-dark bg-dark sticky-top">
-        <div class="container-fluid">
-            <a class="navbar-brand logo" href="/">
+            <div class="container-fluid">
+                <a class="navbar-brand logo" href="/">
+                    Hotel estrella
+                </a>
+            </div>
+        </nav>
 
-                Hotel estrella
-            </a>
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
-                data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
-                aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-            
-                        <ul class="dropdown-menu dropdown-menu-dark" aria-labelledby="dropdown-alumno">
-                            <li>
-                                <a class="dropdown-item" href="/reservas_personal">Listado</a>
-                            </li>
-                        </ul>
-                    </li>
+        <div class="container">
+            <div class="panel-group">
+                <div class="panel panel-default">
+
+                    <!-- PANEL CON TABLA DE LOS CLIENTES -->     
+
+                    <div class="panel-heading">
+                        <h4 class="panel-title">
+                            <a data-toggle="collapse" href="#collapse1">Listado de Clientes</a>
+                        </h4>
+                    </div>
+                    <div id="collapse1" class="panel-collapse collapse">
+                        <div class="container mt-5 mb-xl-5">
+                            <div th:if="${cliente != null && !cliente.isEmpty()}" class="table-responsive">
+                                <table class="table table-sm table-bordered">
+                                    <thead class="table-secondary text-center">
+                                        <tr>
+                                            <th class="col-xl-1 pl-2" scope="col">ID</th>
+                                            <th class="col-xl-3 px-xl-2" scope="col">Apellido</th>
+                                            <th class="col-xl-3 px-xl-2" scope="col">Nombre</th>
+                                            <th class="col-xl-2 px-xl-2" scope="col">Edad</th>
+                                            <th class="col-xl-2 px-xl-2" scope="col">Email</th>
+                                            <th class="col-xl-3 px-xl-2" scope="col">Acciones</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <!--ACA DEBEN USAR THYMELEAF (th:each)-->
+                                        <tr th:each="clt : ${cliente}">
+                                            <th class="col-xl-1 px-xl-2 text-center" scope="row" th:text="${clt.id}"></th>
+                                            <td class="col-xl-3 px-xl-2" th:text="${clt.apellido}"></td>
+                                            <td class="col-xl-3 px-xl-2" th:text="${clt.nombre}"></td>
+                                            <td class="col-xl-2 px-xl-2 text-center" th:text="${clt.edad}"></td>
+                                            <td class="col-xl-2 px-xl-2 text-center" th:text="${clt.mail}"></td>
+                                            <td class="col-xl-3 px-xl-2 d-flex justify-content-around w-100">
+                                                <a  onclick="return false" class="btn btn-secondary btn-sm" th:href="@{/clt/form/} + ${clt.id}">Editar</a>&nbsp;
+                                                <a  onclick="return false" class="btn btn-danger btn-sm" th:href="@{/clt/eliminar/} + ${clt.id}">Eliminar</a>
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                            <div th:unless="${cliente != null && !cliente.isEmpty()}">
+                                <h5>Todavía no hay clientes cargados....</h5>
+                            </div>        
+                        </div>
+                    </div>
+
+                    <!-- PANEL CON TABLA DE LAS RESERVAS -->     
+
+                    <div class="panel-heading">
+                        <h4 class="panel-title">
+                            <a data-toggle="collapse" href="#collapse2">Listado de Reservas</a>
+                        </h4>
+                    </div>
+                    <div id="collapse2" class="panel-collapse collapse">
+                        <div class="container mt-5 mb-xl-5">
+                            <div th:if="${arriendo != null && !arriendo.isEmpty()}" class="table-responsive">
+                                <table class="table table-sm table-bordered">
+                                    <thead class="table-secondary text-center">
+                                        <tr>
+                                            <th class="col-xl-1 pl-2" scope="col">ID</th>
+                                            <th class="col-xl-3 px-xl-2" scope="col">Fecha Ingreso</th>
+                                            <th class="col-xl-3 px-xl-2" scope="col">Fecha Retiro</th>
+                                            <th class="col-xl-2 px-xl-2" scope="col">Días</th>
+                                            <th class="col-xl-2 px-xl-2" scope="col">Cliente</th>
+                                            <th class="col-xl-3 px-xl-2" scope="col">Pieza</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <!--ACA DEBEN USAR THYMELEAF (th:each)-->
+                                        <tr th:each="clt : ${arriendo}">
+                                            <th class="col-xl-1 px-xl-2" th:text="${clt.id}"></th>
+                                            <td class="col-xl-3 px-xl-2" th:text="${clt.fechaIngreso}"></td>
+                                            <td class="col-xl-3 px-xl-2" th:text="${clt.fechaRetiro}"></td>
+                                            <td class="col-xl-2 px-xl-2 text-center" th:text="${clt.numDias}"></td>
+                                            <td class="col-xl-2 px-xl-2 text-center" th:text="${clt.cliente.nombre}"></td>
+                                            <td class="col-xl-2 px-xl-2 text-center" th:text="${clt.pieza.tipoPieza}"></td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                            <div th:unless="${arriendo != null && !arriendo.isEmpty()}">
+                                <h5>Todavía no hay reservas cargadas....</h5>
+                            </div>        
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/js/bootstrap.bundle.min.js"
+                integrity="sha384-ygbV9kiqUc6oa4msXn9868pTtWMgiQaeYH7/t7LECLbyPA2x65Kgf80OJFdroafW"
+        crossorigin="anonymous"></script>
     </body>
 </html>

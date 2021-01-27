@@ -7,6 +7,7 @@ package com.example.Hotel.controladores;
 
 
 import com.example.Hotel.entidades.Cliente;
+import com.example.Hotel.servicios.ArriendoServicio;
 import com.example.Hotel.servicios.BuscadorServicio;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -24,12 +25,22 @@ public class buscadorControlador {
     
     @Autowired
     private BuscadorServicio buscadorServicio;
+
+    @Autowired
+    private ArriendoServicio arriendoServicio;
     
+    @Autowired
+    public buscadorControlador (BuscadorServicio buscadorServicio, 
+            ArriendoServicio arriendoServicio){
+        this.buscadorServicio = buscadorServicio;
+        this.arriendoServicio = arriendoServicio;
+    } 
     
     @GetMapping
     public ModelAndView listado(){
         ModelAndView mav = new ModelAndView("buscador");
         mav.addObject("cliente", buscadorServicio.buscarTodos());
+        mav.addObject("arriendo",arriendoServicio.consultarArriendos());
         return mav;
     }
     
