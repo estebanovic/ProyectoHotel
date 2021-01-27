@@ -46,15 +46,15 @@
                                 </tr>
                                 </thead>
                                 <tbody>
-                                    <!--<tr th:each="${reserva : reservas}">
-                                        <td th:text="reserva.id"></td>
-                                        <td></td>
-                                        <td></td>
-                                        <td></td>
-                                        <td></td>
-                                        <td></td>
-                                        <td></td>
-                                    </tr>-->
+                                    <tr th:each = "arriendo: ${arriendos}">
+                                        <td th:text="${arriendo.id}"></td>
+                                        <td th:text="${arriendo.fechaIngreso}"></td>
+                                        <td th:text="${arriendo.fechaRetiro}"></td>
+                                        <td th:text="${arriendo.numDias}"></td>
+                                        <td th:text="${arriendo.cotizacion}"></td>
+                                        <td th:text="${arriendo.pieza}"></td>
+                                        <td th:text="${arriendo.cliente}"></td>
+                                    </tr>
                                 </tbody>
                             </table>
                         </div>

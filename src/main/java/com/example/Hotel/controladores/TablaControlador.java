@@ -23,8 +23,17 @@ public class TablaControlador {
     @Autowired
     private PiezaServicio piezaServicio;
     
-    @GetMapping("")
+    @GetMapping
+    public ModelAndView listado(){
+        ModelAndView mav = new ModelAndView("tablas");
+        mav.addObject("arriendos",arriendoServicio.consultarArriendos());
+        return mav;
+    }
+    
+    @GetMapping("/")
     public String home(){
         return "tablas.html";
     }
+    
+    
 }
