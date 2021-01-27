@@ -15,7 +15,7 @@ public class Seguridad extends WebSecurityConfigurerAdapter{
     @Override
     protected void configure(HttpSecurity http) throws Exception {
        http.authorizeRequests()
-               .antMatchers("/tabla").authenticated()
+//               .antMatchers("/tabla").authenticated()
                .anyRequest().permitAll()
                .and()
                .formLogin()

@@ -497,6 +497,13 @@ button:focus {
     min-width: 1250px;
     min-height: 1000px;
 }
+.tablas{
+    position: relative;
+    overflow: hidden;
+    width: 100%;
+    min-width: 1250px;
+    min-height: 750px;
+}
 
 .overlay {
     position: absolute;
