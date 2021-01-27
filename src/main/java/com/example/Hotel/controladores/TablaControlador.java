@@ -1,25 +1,30 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package com.example.Hotel.controladores;
 
+import com.example.Hotel.servicios.ArriendoServicio;
+import com.example.Hotel.servicios.ClienteServicio;
+import com.example.Hotel.servicios.PiezaServicio;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.servlet.ModelAndView;
 
-/**
- *
- * @author Esteban
- */
+
 @Controller
 @RequestMapping("/tabla")
 public class TablaControlador {
+    
+    @Autowired
+    private ArriendoServicio arriendoServicio;
+    
+    @Autowired
+    private ClienteServicio clienteServicio;
+    
+    @Autowired
+    private PiezaServicio piezaServicio;
     
     @GetMapping("")
     public String home(){
         return "tablas.html";
     }
-    
 }
