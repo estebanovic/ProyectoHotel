@@ -19,7 +19,6 @@
         <link rel="stylesheet" href="css/responsive.css">
     </head>
     <body>
-
         <!--================Header Area =================-->
         <header class="header_area">
             <div class="container">
@@ -29,18 +28,11 @@
         <br>
          <br>
           <br>
-
-
         <!--================Header Area =================-->
-<br>
-<br>
-<br>
         <div class="container">
             <div class="panel-group">
                 <div class="panel panel-default">
-
-                    <!-- PANEL CON TABLA DE LOS CLIENTES -->     
-
+                    <!-- PANEL CON TABLA DE LOS CLIENTES -->
                     <div class="panel-heading">
                         <h4 class="panel-title">
                             <a data-toggle="collapse" href="#collapse1">Listado de Clientes</a>
@@ -69,6 +61,7 @@
                                             <td class="col-xl-2 px-xl-2 text-center" th:text="${clt.edad}"></td>
                                             <td class="col-xl-2 px-xl-2 text-center" th:text="${clt.mail}"></td>
                                             <td class="col-xl-3 px-xl-2 d-flex justify-content-around w-100">
+                                                <a  onclick="return false" class="btn btn-secondary btn-sm" th:href="@{/clt/form/} + ${clt.id}">Editar</a>&nbsp;
                                                 <a  onclick="return false" class="btn btn-danger btn-sm" th:href="@{/clt/eliminar/} + ${clt.id}">Eliminar</a>
                                             </td>
                                         </tr>
@@ -120,7 +113,6 @@
                             </div>        
                         </div>
                     </div>
-
                 </div>
             </div>
         </div>
@@ -131,11 +123,7 @@
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/js/bootstrap.bundle.min.js"
                 integrity="sha384-ygbV9kiqUc6oa4msXn9868pTtWMgiQaeYH7/t7LECLbyPA2x65Kgf80OJFdroafW"
         crossorigin="anonymous"></script>
-
         <!--================ start footer Area  =================-->
-
-
-
         <footer class="footer-area section_gap">
             <div class="container">
                 <div class="row">
@@ -214,8 +202,6 @@ Copyright &copy;<script>document.write(new Date().getFullYear());</script> All r
             </div>
         </footer>
 		<!--================ End footer Area  =================-->
-
-
         <!-- Optional JavaScript -->
         <!-- jQuery first, then Popper.js, then Bootstrap JS -->
         <script src="js/jquery-3.2.1.min.js"></script>
@@ -230,5 +216,8 @@ Copyright &copy;<script>document.write(new Date().getFullYear());</script> All r
         <script src="js/stellar.js"></script>
         <script src="vendors/lightbox/simpleLightbox.min.js"></script>
         <script src="js/custom.js"></script>
-
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/js/bootstrap.bundle.min.js"
+                integrity="sha384-ygbV9kiqUc6oa4msXn9868pTtWMgiQaeYH7/t7LECLbyPA2x65Kgf80OJFdroafW"
+        crossorigin="anonymous"></script>
+    </body>
 </html>

@@ -22,18 +22,18 @@ import org.springframework.web.servlet.view.RedirectView;
 @Controller
 @RequestMapping("/reservas_personal")
 public class buscadorControlador {
-
+    
     @Autowired
     private BuscadorServicio buscadorServicio;
     private ArriendoServicio arriendoServicio;
-
+    
     @Autowired
     public buscadorControlador (BuscadorServicio buscadorServicio, 
             ArriendoServicio arriendoServicio){
         this.buscadorServicio = buscadorServicio;
         this.arriendoServicio = arriendoServicio;
     } 
-
+    
     @GetMapping
     public ModelAndView listado(){
         ModelAndView mav = new ModelAndView("buscador");
@@ -41,19 +41,20 @@ public class buscadorControlador {
         mav.addObject("arriendo",arriendoServicio.consultarArriendos());
         return mav;
     }
-
+    
     @GetMapping("/reservas_personal")
     public ModelAndView buscador(){
         ModelAndView mav = new ModelAndView("buscador");
         mav.addObject("cliente", new Cliente());
         return mav;
     }
-
+    
     @PostMapping("/guardar")
     public RedirectView guardar(@ModelAttribute Cliente cliente) throws Exception {
         RedirectView rv = new RedirectView("/");
         buscadorServicio.guardar(cliente);
         return rv;
     }
-
+    
 }
+
