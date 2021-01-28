@@ -29,6 +29,9 @@
          <br>
           <br>
         <!--================Header Area =================-->
+        <br>
+         <br>
+          <br>
         <div class="container">
             <div class="panel-group">
                 <div class="panel panel-default">
@@ -48,7 +51,7 @@
                                             <th class="col-xl-3 px-xl-2" scope="col">Apellido</th>
                                             <th class="col-xl-3 px-xl-2" scope="col">Nombre</th>
                                             <th class="col-xl-2 px-xl-2" scope="col">Edad</th>
-                                            <th class="col-xl-2 px-xl-2" scope="col">Email</th>
+                                            <th class="col-xl-2 px-xl-5" scope="col">Email</th>
                                             <th class="col-xl-3 px-xl-2" scope="col">Acciones</th>
                                         </tr>
                                     </thead>
@@ -60,9 +63,8 @@
                                             <td class="col-xl-3 px-xl-2" th:text="${clt.nombre}"></td>
                                             <td class="col-xl-2 px-xl-2 text-center" th:text="${clt.edad}"></td>
                                             <td class="col-xl-2 px-xl-2 text-center" th:text="${clt.mail}"></td>
-                                            <td class="col-xl-3 px-xl-2 d-flex justify-content-around w-100">
-                                                <a  onclick="return false" class="btn btn-secondary btn-sm" th:href="@{/clt/form/} + ${clt.id}">Editar</a>&nbsp;
-                                                <a  onclick="return false" class="btn btn-danger btn-sm" th:href="@{/clt/eliminar/} + ${clt.id}">Eliminar</a>
+                                            <td class="col-xl- px-xl-2 d-flex justify-content-around w-100">
+                                               <a  onclick="return false" class="btn btn-danger btn-sm" th:href="@{/clt/eliminar/} + ${clt.id}">Eliminar</a>
                                             </td>
                                         </tr>
                                     </tbody>
