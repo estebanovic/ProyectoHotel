@@ -498,6 +498,14 @@ button:focus {
     min-height: 1000px;
 }
 
+.reservacion_tabla{
+    position: relative;
+    overflow: hidden;
+    width: 100%;
+    min-width: 1650px;
+    min-height: 1000px;
+}
+
 .overlay {
     position: absolute;
     left: 0;

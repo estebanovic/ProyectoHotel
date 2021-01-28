@@ -20,7 +20,7 @@ public class ArriendoServicio {
     @Autowired
     private ArriendoRepositorio arriendoRepositorio;
 
-    public void crearArriendo(Date fechaIngreso, Date fechaRetiro, Cliente cliente, Pieza pieza) {
+    public void crearArriendo(String id, Date fechaIngreso, Date fechaRetiro, Cliente cliente, Pieza pieza) {
         Arriendo arriendo = new Arriendo();
 
         LocalDate localFechaIngreso = fechaIngreso.toInstant().atZone(ZoneId.systemDefault()).toLocalDate();
@@ -28,9 +28,6 @@ public class ArriendoServicio {
 
         int numDias = (int) ChronoUnit.DAYS.between(localFechaIngreso, localFechaRetiro);
         int cotizacion = numDias * pieza.getPrecioNoche();
-        
-        UUID uuid =UUID.randomUUID();
-        String id = uuid.toString();
         
         arriendo.setId(id);
         arriendo.setFechaIngreso(fechaIngreso);
@@ -70,6 +67,17 @@ public class ArriendoServicio {
     public List<Arriendo> consultarArriendos() {
         return arriendoRepositorio.findAll();
     }
+    
+    public Arriendo buscarArriendo(String id) throws Exception{
+        Optional<Arriendo> respuesta = arriendoRepositorio.findById(id);
+        if (respuesta.isPresent()) {
+            Arriendo arriendo = respuesta.get();
+            return arriendo;
+
+        } else {
+            throw new Exception("ERROR");
+        }
+    }
 
     public void eliminarArriendo(String id) throws Exception {
         Optional<Arriendo> respuesta = arriendoRepositorio.findById(id);
@@ -81,5 +89,4 @@ public class ArriendoServicio {
             throw new Exception("ERROR");
         }
     }
- 
 }

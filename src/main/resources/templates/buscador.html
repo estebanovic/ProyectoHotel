@@ -25,13 +25,13 @@
                 <nav th:replace="plantilla :: navbar"></nav>
             </div>
         </header> 
-        <br>
-         <br>
-          <br>
+        <br></br>
+        <br></br>
         <!--================Header Area =================-->
-        <br>
-         <br>
-          <br>
+        <br></br>
+        <br></br>
+        <br></br>
+        <br></br>
         <div class="container">
             <div class="panel-group">
                 <div class="panel panel-default">
@@ -64,7 +64,7 @@
                                             <td class="col-xl-2 px-xl-2 text-center" th:text="${clt.edad}"></td>
                                             <td class="col-xl-2 px-xl-2 text-center" th:text="${clt.mail}"></td>
                                             <td class="col-xl- px-xl-2 d-flex justify-content-around w-100">
-                                               <a  onclick="return false" class="btn btn-danger btn-sm" th:href="@{/clt/eliminar/} + ${clt.id}">Eliminar</a>
+                                                <a  onclick="return false" class="btn btn-danger btn-sm" th:href="@{/clt/eliminar/} + ${clt.id}">Eliminar</a>
                                             </td>
                                         </tr>
                                     </tbody>
@@ -75,7 +75,8 @@
                             </div>        
                         </div>
                     </div>
-
+                    <br></br>
+                    <br></br>
                     <!-- PANEL CON TABLA DE LAS RESERVAS -->     
 
                     <div class="panel-heading">
@@ -95,17 +96,19 @@
                                             <th class="col-xl-2 px-xl-2" scope="col">Días</th>
                                             <th class="col-xl-2 px-xl-2" scope="col">Cliente</th>
                                             <th class="col-xl-3 px-xl-2" scope="col">Pieza</th>
+                                            <th class="col-xl-3 px-xl-2" scope="col">Precio</th>
                                         </tr>
                                     </thead>
                                     <tbody>
                                         <!--ACA DEBEN USAR THYMELEAF (th:each)-->
                                         <tr th:each="clt : ${arriendo}">
-                                            <th class="col-xl-1 px-xl-2" th:text="${clt.id}"></th>
+                                            <th class="col-xl-1 px-xl-2  text-center" th:text="${clt.id}"></th>
                                             <td class="col-xl-3 px-xl-2" th:text="${clt.fechaIngreso}"></td>
                                             <td class="col-xl-3 px-xl-2" th:text="${clt.fechaRetiro}"></td>
                                             <td class="col-xl-2 px-xl-2 text-center" th:text="${clt.numDias}"></td>
-                                            <td class="col-xl-2 px-xl-2 text-center" th:text="${clt.cliente.nombre}"></td>
+                                            <td class="col-xl-2 px-xl-2 text-center" th:text="${clt.cliente.id}"></td>
                                             <td class="col-xl-2 px-xl-2 text-center" th:text="${clt.pieza.tipoPieza}"></td>
+                                            <td class="col-xl-2 px-xl-2 text-center" th:text="${clt.cotizacion}"></td>
                                         </tr>
                                     </tbody>
                                 </table>
@@ -118,10 +121,12 @@
                 </div>
             </div>
         </div>
-        <br>
-        <br>
-        <br>
-        <br>
+        <br></br>
+        <br></br>
+        <br></br>
+        <br></br>
+        <br></br>
+        <br></br>
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/js/bootstrap.bundle.min.js"
                 integrity="sha384-ygbV9kiqUc6oa4msXn9868pTtWMgiQaeYH7/t7LECLbyPA2x65Kgf80OJFdroafW"
         crossorigin="anonymous"></script>
@@ -132,12 +137,12 @@
                     <div class="col-lg-3  col-md-6 col-sm-6">
                         <div class="single-footer-widget">
                             <h6 class="footer_title">Acerca de la agencia</h6>
-                               <p>El mundo se ha vuelto tan acelerado que la gente no quiere quedarse parada leyendo una página de información, prefieren mirar una presentación y entender el mensaje.</p>
+                            <p>El mundo se ha vuelto tan acelerado que la gente no quiere quedarse parada leyendo una página de información, prefieren mirar una presentación y entender el mensaje. Ha llegado a un punto </p>
                         </div>
                     </div>
                     <div class="col-lg-3 col-md-6 col-sm-6">
                         <div class="single-footer-widget">
-                               <h6 class="footer_title">Enlaces de navegación</h6>
+                            <h6 class="footer_title">Enlaces de navegación</h6>
                             <div class="row">
                                 <div class="col-4">
                                     <ul class="list_style">
@@ -154,20 +159,20 @@
                                         <li><a href="#">Blog</a></li>
                                         <li><a href="#">Contacto</a></li>
                                     </ul>
-                                </div>										
-                            </div>							
+                                </div>
+                            </div>
                         </div>
-                    </div>							
+                    </div>
                     <div class="col-lg-3 col-md-6 col-sm-6">
                         <div class="single-footer-widget">
                             <h6 class="footer_title">Boletin informativo</h6>
-                            <p>Para profesionales de negocios atrapados entre un alto precio de OEM y una impresión y producción gráfica mediocres </p>		
+                            <p>Para profesionales de negocios atrapados entre un alto precio de OEM y una impresión y producción gráfica mediocres, </p>
                             <div id="mc_embed_signup">
                                 <form target="_blank" action="https://spondonit.us12.list-manage.com/subscribe/post?u=1462626880ade1ac87bd9c93a&amp;id=92a4423d01" method="get" class="subscribe_form relative">
                                     <div class="input-group d-flex flex-row">
-                                        <input name="EMAIL" placeholder="Correo electronico" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Email Address '" required="" type="email">
-                                        <button class="btn sub-btn"><span class="lnr lnr-location"></span></button>		
-                                    </div>									
+                                        <input name="EMAIL" placeholder="Correo electrónico" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Email Address '" required="" type="email">
+                                        <button class="btn sub-btn"><span class="lnr lnr-location"></span></button>
+                                    </div>
                                     <div class="mt-10 info"></div>
                                 </form>
                             </div>
@@ -187,23 +192,23 @@
                                 <li><img src="image/instagram/Image-08.jpg" alt=""></li>
                             </ul>
                         </div>
-                    </div>						
+                    </div>
                 </div>
                 <div class="border_line"></div>
                 <div class="row footer-bottom d-flex justify-content-between align-items-center">
                     <p class="col-lg-8 col-sm-12 footer-text m-0"><!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
                         Copyright &copy;<script>document.write(new Date().getFullYear());</script> Todos los derechos reservados | Esta plantilla está hecha con <i class="fa fa-heart-o" aria-hidden="true"></i> por <a href="#" target="_blank">Grupo 3</a>
-<!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. --></p>
+                        <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. --></p>
                     <div class="col-lg-4 col-sm-12 footer-social">
-                        <a target="_blank" href="https://www.facebook.com/"><i class="fa fa-facebook"></i></a>
-                        <a target="_blank" href="https://twitter.com/?lang=es"><i class="fa fa-twitter"></i></a>
-                        <a target="_blank" href="https://dribbble.com/"><i class="fa fa-dribbble"></i></a>
-                        <a target="_blank" href="https://www.behance.net/"><i class="fa fa-behance"></i></a>
+                        <a href="#"><i class="fa fa-facebook"></i></a>
+                        <a href="#"><i class="fa fa-twitter"></i></a>
+                        <a href="#"><i class="fa fa-dribbble"></i></a>
+                        <a href="#"><i class="fa fa-behance"></i></a>
                     </div>
                 </div>
             </div>
         </footer>
-		<!--================ End footer Area  =================-->
+        <!--================ End footer Area  =================-->
         <!-- Optional JavaScript -->
         <!-- jQuery first, then Popper.js, then Bootstrap JS -->
         <script src="js/jquery-3.2.1.min.js"></script>
