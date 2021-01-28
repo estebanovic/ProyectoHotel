@@ -95,17 +95,19 @@
                                             <th class="col-xl-2 px-xl-2" scope="col">Días</th>
                                             <th class="col-xl-2 px-xl-2" scope="col">Cliente</th>
                                             <th class="col-xl-3 px-xl-2" scope="col">Pieza</th>
+                                            <th class="col-xl-3 px-xl-2" scope="col">Precio</th>
                                         </tr>
                                     </thead>
                                     <tbody>
                                         <!--ACA DEBEN USAR THYMELEAF (th:each)-->
                                         <tr th:each="clt : ${arriendo}">
-                                            <th class="col-xl-1 px-xl-2" th:text="${clt.id}"></th>
+                                            <th class="col-xl-1 px-xl-2  text-center" th:text="${clt.id}"></th>
                                             <td class="col-xl-3 px-xl-2" th:text="${clt.fechaIngreso}"></td>
                                             <td class="col-xl-3 px-xl-2" th:text="${clt.fechaRetiro}"></td>
                                             <td class="col-xl-2 px-xl-2 text-center" th:text="${clt.numDias}"></td>
-                                            <td class="col-xl-2 px-xl-2 text-center" th:text="${clt.cliente.nombre}"></td>
+                                            <td class="col-xl-2 px-xl-2 text-center" th:text="${clt.cliente.id}"></td>
                                             <td class="col-xl-2 px-xl-2 text-center" th:text="${clt.pieza.tipoPieza}"></td>
+                                            <td class="col-xl-2 px-xl-2 text-center" th:text="${clt.cotizacion}"></td>
                                         </tr>
                                     </tbody>
                                 </table>
