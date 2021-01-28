@@ -1,65 +1,235 @@
-<!DOCTYPE html>
-<!--
-To change this license header, choose License Headers in Project Properties.
-To change this template file, choose Tools | Templates
-and open the template in the editor.
--->
-<html>
+<!doctype html>
+<html lang="en">
     <head>
-        <title>lista de reservas</title>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <!-- Required meta tags -->
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
         <link rel="icon" href="image/estrella.png" type="image/png">
-        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet"
-        integrity="sha384-giJF6kkoqNQ00vy+HMDP7azOuL0xtbfIcaT9wjKHr8RbDVddVHyTfAAsrekwKmP1" crossorigin="anonymous" />
-        <style>
-        .logo {
-            filter: grayscale(1);
-            transition: 500ms;
-        }
-
-        .logo:hover {
-            filter: grayscale(0);
-            transition: 500ms;
-        }
-
-        h5 a {
-            text-decoration: none;
-        }
-
-        h5 a:hover {
-            text-decoration: underline;
-        }
-
-        input::-webkit-inner-spin-button,
-        input::-webkit-outer-spin-button {
-            -webkit-appearance: none;
-            margin: 0;
-        }
-
-        input[type="number"] {
-            -moz-appearance: textfield;
-        }
-    </style>
+        <title>Royal Hotel</title>
+        <!-- Bootstrap CSS -->
+        <link rel="stylesheet" href="css/bootstrap.css">
+        <link rel="stylesheet" href="vendors/linericon/style.css">
+        <link rel="stylesheet" href="css/font-awesome.min.css">
+        <link rel="stylesheet" href="vendors/owl-carousel/owl.carousel.min.css">
+        <link rel="stylesheet" href="vendors/bootstrap-datepicker/bootstrap-datetimepicker.min.css">
+        <link rel="stylesheet" href="vendors/nice-select/css/nice-select.css">
+        <link rel="stylesheet" href="vendors/owl-carousel/owl.carousel.min.css">
+        <!-- main css -->
+        <link rel="stylesheet" href="css/style.css">
+        <link rel="stylesheet" href="css/responsive.css">
     </head>
     <body>
-        <nav class="navbar navbar-expand-md navbar-dark bg-dark sticky-top">
-        <div class="container-fluid">
-            <a class="navbar-brand logo" href="/">
+        
+        <!--================Header Area =================-->
+        <header class="header_area">
+            <div class="container">
+                <nav th:replace="plantilla :: navbar"></nav>
+            </div>
+        </header> 
+        <br>
+         <br>
+          <br>
+          
+        
+        <!--================Header Area =================-->
+<br>
+<br>
+<br>
+        <div class="container">
+            <div class="panel-group">
+                <div class="panel panel-default">
 
-                Hotel estrella
-            </a>
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
-                data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
-                aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-            
-                        <ul class="dropdown-menu dropdown-menu-dark" aria-labelledby="dropdown-alumno">
-                            <li>
-                                <a class="dropdown-item" href="/reservas_personal">Listado</a>
-                            </li>
-                        </ul>
-                    </li>
+                    <!-- PANEL CON TABLA DE LOS CLIENTES -->     
+
+                    <div class="panel-heading">
+                        <h4 class="panel-title">
+                            <a data-toggle="collapse" href="#collapse1">Listado de Clientes</a>
+                        </h4>
+                    </div>
+                    <div id="collapse1" class="panel-collapse collapse">
+                        <div class="container mt-5 mb-xl-5">
+                            <div th:if="${cliente != null && !cliente.isEmpty()}" class="table-responsive">
+                                <table class="table table-sm table-bordered">
+                                    <thead class="table-secondary text-center">
+                                        <tr>
+                                            <th class="col-xl-1 pl-2" scope="col">ID</th>
+                                            <th class="col-xl-3 px-xl-2" scope="col">Apellido</th>
+                                            <th class="col-xl-3 px-xl-2" scope="col">Nombre</th>
+                                            <th class="col-xl-2 px-xl-2" scope="col">Edad</th>
+                                            <th class="col-xl-2 px-xl-2" scope="col">Email</th>
+                                            <th class="col-xl-3 px-xl-2" scope="col">Acciones</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <!--ACA DEBEN USAR THYMELEAF (th:each)-->
+                                        <tr th:each="clt : ${cliente}">
+                                            <th class="col-xl-1 px-xl-2 text-center" scope="row" th:text="${clt.id}"></th>
+                                            <td class="col-xl-3 px-xl-2" th:text="${clt.apellido}"></td>
+                                            <td class="col-xl-3 px-xl-2" th:text="${clt.nombre}"></td>
+                                            <td class="col-xl-2 px-xl-2 text-center" th:text="${clt.edad}"></td>
+                                            <td class="col-xl-2 px-xl-2 text-center" th:text="${clt.mail}"></td>
+                                            <td class="col-xl-3 px-xl-2 d-flex justify-content-around w-100">
+                                                <a  onclick="return false" class="btn btn-secondary btn-sm" th:href="@{/clt/form/} + ${clt.id}">Editar</a>&nbsp;
+                                                <a  onclick="return false" class="btn btn-danger btn-sm" th:href="@{/clt/eliminar/} + ${clt.id}">Eliminar</a>
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                            <div th:unless="${cliente != null && !cliente.isEmpty()}">
+                                <h5>Todavía no hay clientes cargados....</h5>
+                            </div>        
+                        </div>
+                    </div>
+
+                    <!-- PANEL CON TABLA DE LAS RESERVAS -->     
+
+                    <div class="panel-heading">
+                        <h4 class="panel-title">
+                            <a data-toggle="collapse" href="#collapse2">Listado de Reservas</a>
+                        </h4>
+                    </div>
+                    <div id="collapse2" class="panel-collapse collapse">
+                        <div class="container mt-5 mb-xl-5">
+                            <div th:if="${arriendo != null && !arriendo.isEmpty()}" class="table-responsive">
+                                <table class="table table-sm table-bordered">
+                                    <thead class="table-secondary text-center">
+                                        <tr>
+                                            <th class="col-xl-1 pl-2" scope="col">ID</th>
+                                            <th class="col-xl-3 px-xl-2" scope="col">Fecha Ingreso</th>
+                                            <th class="col-xl-3 px-xl-2" scope="col">Fecha Retiro</th>
+                                            <th class="col-xl-2 px-xl-2" scope="col">Días</th>
+                                            <th class="col-xl-2 px-xl-2" scope="col">Cliente</th>
+                                            <th class="col-xl-3 px-xl-2" scope="col">Pieza</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <!--ACA DEBEN USAR THYMELEAF (th:each)-->
+                                        <tr th:each="clt : ${arriendo}">
+                                            <th class="col-xl-1 px-xl-2" th:text="${clt.id}"></th>
+                                            <td class="col-xl-3 px-xl-2" th:text="${clt.fechaIngreso}"></td>
+                                            <td class="col-xl-3 px-xl-2" th:text="${clt.fechaRetiro}"></td>
+                                            <td class="col-xl-2 px-xl-2 text-center" th:text="${clt.numDias}"></td>
+                                            <td class="col-xl-2 px-xl-2 text-center" th:text="${clt.cliente.nombre}"></td>
+                                            <td class="col-xl-2 px-xl-2 text-center" th:text="${clt.pieza.tipoPieza}"></td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                            <div th:unless="${arriendo != null && !arriendo.isEmpty()}">
+                                <h5>Todavía no hay reservas cargadas....</h5>
+                            </div>        
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+        <br>
+        <br>
+        <br>
+        <br>
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/js/bootstrap.bundle.min.js"
+                integrity="sha384-ygbV9kiqUc6oa4msXn9868pTtWMgiQaeYH7/t7LECLbyPA2x65Kgf80OJFdroafW"
+        crossorigin="anonymous"></script>
+        
+        <!--================ start footer Area  =================-->
+        
+        
+        
+        <footer class="footer-area section_gap">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-3  col-md-6 col-sm-6">
+                        <div class="single-footer-widget">
+                            <h6 class="footer_title">About Agency</h6>
+                            <p>The world has become so fast paced that people don’t want to stand by reading a page of information, they would much rather look at a presentation and understand the message. It has come to a point </p>
+                        </div>
+                    </div>
+                    <div class="col-lg-3 col-md-6 col-sm-6">
+                        <div class="single-footer-widget">
+                            <h6 class="footer_title">Navigation Links</h6>
+                            <div class="row">
+                                <div class="col-4">
+                                    <ul class="list_style">
+                                        <li><a href="#">Home</a></li>
+                                        <li><a href="#">Feature</a></li>
+                                        <li><a href="#">Services</a></li>
+                                        <li><a href="#">Portfolio</a></li>
+                                    </ul>
+                                </div>
+                                <div class="col-4">
+                                    <ul class="list_style">
+                                        <li><a href="#">Team</a></li>
+                                        <li><a href="#">Pricing</a></li>
+                                        <li><a href="#">Blog</a></li>
+                                        <li><a href="#">Contact</a></li>
+                                    </ul>
+                                </div>										
+                            </div>							
+                        </div>
+                    </div>							
+                    <div class="col-lg-3 col-md-6 col-sm-6">
+                        <div class="single-footer-widget">
+                            <h6 class="footer_title">Newsletter</h6>
+                            <p>For business professionals caught between high OEM price and mediocre print and graphic output, </p>		
+                            <div id="mc_embed_signup">
+                                <form target="_blank" action="https://spondonit.us12.list-manage.com/subscribe/post?u=1462626880ade1ac87bd9c93a&amp;id=92a4423d01" method="get" class="subscribe_form relative">
+                                    <div class="input-group d-flex flex-row">
+                                        <input name="EMAIL" placeholder="Email Address" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Email Address '" required="" type="email">
+                                        <button class="btn sub-btn"><span class="lnr lnr-location"></span></button>		
+                                    </div>									
+                                    <div class="mt-10 info"></div>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-3 col-md-6 col-sm-6">
+                        <div class="single-footer-widget instafeed">
+                            <h6 class="footer_title">InstaFeed</h6>
+                            <ul class="list_style instafeed d-flex flex-wrap">
+                                <li><img src="image/instagram/Image-01.jpg" alt=""></li>
+                                <li><img src="image/instagram/Image-02.jpg" alt=""></li>
+                                <li><img src="image/instagram/Image-03.jpg" alt=""></li>
+                                <li><img src="image/instagram/Image-04.jpg" alt=""></li>
+                                <li><img src="image/instagram/Image-05.jpg" alt=""></li>
+                                <li><img src="image/instagram/Image-06.jpg" alt=""></li>
+                                <li><img src="image/instagram/Image-07.jpg" alt=""></li>
+                                <li><img src="image/instagram/Image-08.jpg" alt=""></li>
+                            </ul>
+                        </div>
+                    </div>						
+                </div>
+                <div class="border_line"></div>
+                <div class="row footer-bottom d-flex justify-content-between align-items-center">
+                    <p class="col-lg-8 col-sm-12 footer-text m-0"><!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
+Copyright &copy;<script>document.write(new Date().getFullYear());</script> All rights reserved | This template is made with <i class="fa fa-heart-o" aria-hidden="true"></i> by <a href="https://colorlib.com" target="_blank">Colorlib</a>
+<!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. --></p>
+                    <div class="col-lg-4 col-sm-12 footer-social">
+                        <a href="#"><i class="fa fa-facebook"></i></a>
+                        <a href="#"><i class="fa fa-twitter"></i></a>
+                        <a href="#"><i class="fa fa-dribbble"></i></a>
+                        <a href="#"><i class="fa fa-behance"></i></a>
+                    </div>
+                </div>
+            </div>
+        </footer>
+		<!--================ End footer Area  =================-->
+        
+        
+        <!-- Optional JavaScript -->
+        <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+        <script src="js/jquery-3.2.1.min.js"></script>
+        <script src="js/popper.js"></script>
+        <script src="js/bootstrap.min.js"></script>
+        <script src="vendors/owl-carousel/owl.carousel.min.js"></script>
+        <script src="js/jquery.ajaxchimp.min.js"></script>
+        <script src="js/mail-script.js"></script>
+        <script src="vendors/bootstrap-datepicker/bootstrap-datetimepicker.min.js"></script>
+        <script src="vendors/nice-select/js/jquery.nice-select.js"></script>
+        <script src="js/mail-script.js"></script>
+        <script src="js/stellar.js"></script>
+        <script src="vendors/lightbox/simpleLightbox.min.js"></script>
+        <script src="js/custom.js"></script>
     </body>
 </html>
