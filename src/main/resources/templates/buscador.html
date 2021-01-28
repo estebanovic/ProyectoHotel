@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="en">
+<html lang="es" xmlns:th="http://www.thymeleaf.org">
     <head>
         <!-- Required meta tags -->
         <meta charset="utf-8">
@@ -52,7 +52,7 @@
                                 <table class="table table-sm table-bordered">
                                     <thead class="table-secondary text-center">
                                         <tr>
-                                            <th class="col-xl-1 pl-2" scope="col">ID</th>
+                                            <th class="col-xl-3 pl-2" scope="col">ID</th>
                                             <th class="col-xl-3 px-xl-2" scope="col">Apellido</th>
                                             <th class="col-xl-3 px-xl-2" scope="col">Nombre</th>
                                             <th class="col-xl-2 px-xl-2" scope="col">Edad</th>
@@ -63,7 +63,7 @@
                                     <tbody>
                                         <!--ACA DEBEN USAR THYMELEAF (th:each)-->
                                         <tr th:each="clt : ${cliente}">
-                                            <th class="col-xl-1 px-xl-2 text-center" scope="row" th:text="${clt.id}"></th>
+                                            <th class="col-xl-3 px-xl-2 text-center" scope="row" th:text="${clt.id}"></th>
                                             <td class="col-xl-3 px-xl-2" th:text="${clt.apellido}"></td>
                                             <td class="col-xl-3 px-xl-2" th:text="${clt.nombre}"></td>
                                             <td class="col-xl-2 px-xl-2 text-center" th:text="${clt.edad}"></td>
@@ -231,11 +231,7 @@ Copyright &copy;<script>document.write(new Date().getFullYear());</script> All r
         <script src="js/stellar.js"></script>
         <script src="vendors/lightbox/simpleLightbox.min.js"></script>
         <script src="js/custom.js"></script>
-=======
-<!DOCTYPE html>
-<html>
-    <head>
-        <title>Lista de Reservas - Hotel Estrella</title>
+
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
         <meta http-equiv="X-UA-Compatible" content="IE=edge" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -271,111 +267,7 @@ Copyright &copy;<script>document.write(new Date().getFullYear());</script> All r
                 -moz-appearance: textfield;
             }
         </style>    
-    </head>
-    <body>
-        <nav class="navbar navbar-expand-md navbar-dark bg-dark sticky-top">
-            <div class="container-fluid">
-                <a class="navbar-brand logo" href="/">
-                    Hotel estrella
-                </a>
-            </div>
-        </nav>
-
-        <div class="container">
-            <div class="panel-group">
-                <div class="panel panel-default">
-
-                    <!-- PANEL CON TABLA DE LOS CLIENTES -->     
-
-                    <div class="panel-heading">
-                        <h4 class="panel-title">
-                            <a data-toggle="collapse" href="#collapse1">Listado de Clientes</a>
-                        </h4>
-                    </div>
-                    <div id="collapse1" class="panel-collapse collapse table ">
-                        <div class="container mt-5 mb-xl-5">
-                            <div th:if="${cliente != null && !cliente.isEmpty()}" class="table-responsive">
-                                <table class="table table-sm table-bordered">
-                                    <thead class="table-secondary text-center">
-                                        <tr>
-                                            <th class="col-xl-1 pl-2" scope="col">ID</th>
-                                            <th class="col-xl-3 px-xl-2" scope="col">Apellido</th>
-                                            <th class="col-xl-3 px-xl-2" scope="col">Nombre</th>
-                                            <th class="col-xl-2 px-xl-2" scope="col">Edad</th>
-                                            <th class="col-xl-2 px-xl-2" scope="col">Email</th>
-                                            <th class="col-xl-3 px-xl-2" scope="col">Acciones</th>
-                                        </tr>
-                                    </thead>
-                                    <tbody>
-                                        <!--ACA DEBEN USAR THYMELEAF (th:each)-->
-                                        <tr th:each="clt : ${cliente}">
-                                            <th class="col-xl-1 px-xl-2 text-center" scope="row" th:text="${clt.id}"></th>
-                                            <td class="col-xl-3 px-xl-2" th:text="${clt.apellido}"></td>
-                                            <td class="col-xl-3 px-xl-2" th:text="${clt.nombre}"></td>
-                                            <td class="col-xl-2 px-xl-2 text-center" th:text="${clt.edad}"></td>
-                                            <td class="col-xl-2 px-xl-2 text-center" th:text="${clt.mail}"></td>
-                                            <td class="col-xl-3 px-xl-2 d-flex justify-content-around w-100">
-                                                <a  onclick="return false" class="btn btn-secondary btn-sm" th:href="@{/clt/form/} + ${clt.id}">Editar</a>&nbsp;
-                                                <a  onclick="return false" class="btn btn-danger btn-sm" th:href="@{/clt/eliminar/} + ${clt.id}">Eliminar</a>
-                                            </td>
-                                        </tr>
-                                    </tbody>
-                                </table>
-                            </div>
-                            <div th:unless="${cliente != null && !cliente.isEmpty()}">
-                                <h5>Todavía no hay clientes cargados....</h5>
-                            </div>        
-                        </div>
-                    </div>
-
-                    <!-- PANEL CON TABLA DE LAS RESERVAS -->     
-
-                    <div class="panel-heading">
-                        <h4 class="panel-title">
-                            <a data-toggle="collapse" href="#collapse2">Listado de Reservas</a>
-                        </h4>
-                    </div>
-                    <div id="collapse2" class="panel-collapse collapse table">
-                        <div class="container mt-5 mb-xl-5">
-                            <div th:if="${arriendo != null && !arriendo.isEmpty()}" class="table-responsive">
-                                <table class="table table-sm table-bordered">
-                                    <thead class="table-secondary text-center">
-                                        <tr>
-                                            <th class="col-xl-1 pl-2" scope="col">ID</th>
-                                            <th class="col-xl-3 px-xl-2" scope="col">Fecha Ingreso</th>
-                                            <th class="col-xl-3 px-xl-2" scope="col">Fecha Retiro</th>
-                                            <th class="col-xl-2 px-xl-2" scope="col">Días</th>
-                                            <th class="col-xl-2 px-xl-2" scope="col">Cliente</th>
-                                            <th class="col-xl-3 px-xl-2" scope="col">Pieza</th>
-                                            <th class="col-xl-3 px-xl-2" scope="col">Precio</th>
-                                        </tr>
-                                    </thead>
-                                    <tbody>
-                                        <!--ACA DEBEN USAR THYMELEAF (th:each)-->
-                                        <tr th:each="clt : ${arriendo}">
-                                            <th class="col-xl-1 px-xl-2" th:text="${clt.id}"></th>
-                                            <td class="col-xl-3 px-xl-2" th:text="${clt.fechaIngreso}"></td>
-                                            <td class="col-xl-3 px-xl-2" th:text="${clt.fechaRetiro}"></td>
-                                            <td class="col-xl-2 px-xl-2 text-center" th:text="${clt.numDias}"></td>
-                                            <td class="col-xl-2 px-xl-2 text-center" th:text="${clt.cliente.nombre}"></td>
-                                            <td class="col-xl-2 px-xl-2 text-center" th:text="${clt.pieza.tipoPieza}"></td>
-                                            <td class="col-xl-2 px-xl-2 text-center" th:text="${clt.cotizacion}"></td>
-                                        </tr>
-                                    </tbody>
-                                </table>
-                            </div>
-                            <div th:unless="${arriendo != null && !arriendo.isEmpty()}">
-                                <h5>Todavía no hay reservas cargadas....</h5>
-                            </div>        
-                        </div>
-                    </div>
-
-                </div>
-            </div>
-        </div>
-        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/js/bootstrap.bundle.min.js"
-                integrity="sha384-ygbV9kiqUc6oa4msXn9868pTtWMgiQaeYH7/t7LECLbyPA2x65Kgf80OJFdroafW"
-        crossorigin="anonymous"></script>
->>>>>>> 651350dde363a5d7df303f84d07725b3dc38eb38
+   
+       
     </body>
 </html>
